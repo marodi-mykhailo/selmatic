@@ -16,7 +16,7 @@ export const sidebarReducer = (state = initialState, action: ActionsType): Sideb
 }
 
 
-const setIsCollapsedAC = (status: boolean) => ({
+export const setIsCollapsedAC = (status: boolean) => ({
     type: "SIDEBAR/SET-IS-COLLAPSED", status
 } as const)
 

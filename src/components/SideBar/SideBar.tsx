@@ -11,19 +11,24 @@ import {
     UserOutlined
 } from "@ant-design/icons";
 import triggerImg from '../../assets/img/sidebar_trigger.jpeg'
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../redux/store";
+import {setIsCollapsedAC} from "./sidebar.reducer";
 
 const {SubMenu, Item} = Menu
 
 const SideBar = () => {
+    const dispatch = useDispatch()
+    const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
+
     useEffect(() => {
         getTime()
     }, [])
 
-    const [isCollapsed, setIsCollapsed] = useState(false)
     const [time, setTime] = useState('')
 
     const onCollapse = () => {
-        setIsCollapsed(!isCollapsed)
+        dispatch(setIsCollapsedAC(!isCollapsed))
     }
 
     const getTime = () => {
