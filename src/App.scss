@@ -1,0 +1,20 @@
+.bold {
+  font-weight: bold;
+}
+
+.dropdown {
+  min-width: 160px;
+  max-width: 320px;
+  z-index: 9999;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .4);
+  border-radius: 2px;
+}
+
+
+//// fix float behavior ////
+
+.self_clear:after {
+  content: "";
+  clear: both;
+  display: table;
+}
