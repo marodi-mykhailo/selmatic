@@ -2,6 +2,7 @@ import React from 'react';
 import "./Dashboard.scss";
 import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBreadcrumb";
 import {v1} from "uuid";
+import DashboardSteps from "../../components/DashboardSteps/DashboardSteps";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -16,6 +17,9 @@ const Dashboard = () => {
                 <small> podsumowanie & statystyki</small>
             </h1>
             <MBreadcrumb steps={steps}/>
+            <div style={{width: "80%", margin: "0 auto"}}>
+                <DashboardSteps/>
+            </div>
         </div>
     );
 };
