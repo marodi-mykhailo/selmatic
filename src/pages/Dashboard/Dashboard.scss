@@ -1,3 +1,10 @@
-.dashboard{
+.dashboard {
   padding: 20px 15px;
+
+  &__steps {
+    &-container {
+      width: 90%;
+      margin: 0px auto;
+    }
+  }
 }

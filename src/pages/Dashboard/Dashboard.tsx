@@ -17,7 +17,7 @@ const Dashboard = () => {
                 <small> podsumowanie & statystyki</small>
             </h1>
             <MBreadcrumb steps={steps}/>
-            <div style={{width: "80%", margin: "0 auto"}}>
+            <div className={"dashboard__steps-container"}>
                 <DashboardSteps/>
             </div>
         </div>
