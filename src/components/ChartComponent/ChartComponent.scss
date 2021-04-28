@@ -1,0 +1,30 @@
+.chart {
+  width: 100%;
+  background-color: #fafafa;
+  padding: 0 10px 10px;
+  border-left: 2px solid #e6e9ec;
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, .1);
+  margin: 0 15px 25px;
+
+  &__top {
+    &-title {
+      text-align: start;
+      font-size: 18px;
+      font-weight: 400;
+
+      & i{
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
+
+/// CHANGE CHART.JS TOOLTIP ///
+#chartjs-tooltip {
+
+}
+
+.chart__tooltip-text{
+  font-size: 30px;
+}

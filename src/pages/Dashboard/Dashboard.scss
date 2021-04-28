@@ -1,5 +1,6 @@
 .dashboard {
-  padding: 20px 25px;
+  padding: 60px 25px 20px;
+
 
   &__steps {
     &-container {
@@ -12,4 +13,11 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__charts{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 }
+

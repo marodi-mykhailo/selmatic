@@ -4,6 +4,7 @@ import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBr
 import {v1} from "uuid";
 import DashboardSteps from "../../components/DashboardSteps/DashboardSteps";
 import StatCard from "../../components/StatCard/StatCard";
+import ChartComponent from "../../components/ChartComponent/ChartComponent";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -54,6 +55,19 @@ const Dashboard = () => {
                     bottomBgc={"#7c699f"}
                 />
             </div>
+            <div className={"dashboard__charts"}>
+                <ChartComponent title={"Ilość transakcji w kwietniu"}
+                                pointBackgroundColor={"#F89F9F"}
+                                pointBorderColor={"rgba(248,159,159, .2)"}
+                                tooltipText={"transakcji"}
+                />
+                <ChartComponent title={"Wartość sprzedaży w kwietniu (PLN)"}
+                                pointBackgroundColor={"#9ACBE6"}
+                                pointBorderColor={"#9ACBE6"}
+                                tooltipText={"PLN"}
+                />
+            </div>
+
         </div>
     );
 };
