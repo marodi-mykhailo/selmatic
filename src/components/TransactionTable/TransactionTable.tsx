@@ -1,6 +1,9 @@
 import React from 'react';
 import './TransactionTable.scss';
 import {Table} from "antd";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../redux/store";
+import {transitionTableReducerStateType} from "./transactionTable.reducer";
 
 const columns = [
     {
@@ -45,105 +48,12 @@ const columns = [
     }
 ]
 
-const dataSource = [
-    {
-        key: '1',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    },
-    {
-        key: '2',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    }, {
-        key: '3',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    }, {
-        key: '4',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    }, {
-        key: '5',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    }, {
-        key: '6',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    }, {
-        key: '7',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    }, {
-        key: '8',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    }, {
-        key: '9',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    },
-];
 
 const TransactionTable = () => {
+    const data = useSelector<AppRootStateType, transitionTableReducerStateType>(state => state.transitionTable)
     return (
         <div>
-            <Table dataSource={dataSource}
+            <Table dataSource={data}
                    columns={columns}
                    bordered
             />

@@ -1,9 +1,11 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
-import sidebarReducer from "../components/SideBar/sidebar.reducer";
+import sidebarSlice from "../components/SideBar/sidebar.reducer";
+import transactionTableSlice from "../components/TransactionTable/transactionTable.reducer"
 
 const rootReducer = combineReducers({
-    sidebar: sidebarReducer
+    sidebar: sidebarSlice,
+    transitionTable: transactionTableSlice
 })
 
 export const store = configureStore({
