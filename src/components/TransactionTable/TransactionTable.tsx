@@ -51,6 +51,13 @@ const columns = [
 ]
 
 
+const pagination = {
+    defaultCurrent: 10,
+    showSizeChanger: true,
+    pageSizeOptions: ['1', '10', '15', '20', '50'],
+}
+
+
 const TransactionTable = () => {
     const data = useSelector<AppRootStateType, transitionTableReducerStateType>(state => state.transitionTable)
 
@@ -77,6 +84,7 @@ const TransactionTable = () => {
                           allowClear/>
             <Table dataSource={filteredData}
                    columns={columns}
+                   pagination={pagination}
                    bordered
             />
         </div>
