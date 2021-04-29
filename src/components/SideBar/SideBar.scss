@@ -7,6 +7,7 @@
   position: fixed;
   left: 0;
   font-weight: 300;
+  top: 46px;
 
   &__nav {
     &-menu {
@@ -90,6 +91,6 @@
 
 }
 
-.ant-menu-submenu > .ant-menu{
-  background-color: #394756 ;
+.ant-menu-submenu > .ant-menu {
+  background-color: #394756;
 }

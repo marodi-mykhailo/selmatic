@@ -1,3 +1,5 @@
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+
 export type SidebarReducerStateType = {
     isCollapsed: boolean
 }
@@ -6,18 +8,17 @@ const initialState: SidebarReducerStateType = {
     isCollapsed: false
 }
 
-export const sidebarReducer = (state = initialState, action: ActionsType): SidebarReducerStateType => {
-    switch (action.type) {
-        case "SIDEBAR/SET-IS-COLLAPSED":
-            return {...state, isCollapsed: action.status}
-        default:
-            return state
+
+const sidebarSlice = createSlice({
+    name: "sidebar",
+    initialState,
+    reducers: {
+        setIsCollapsed(state, action: PayloadAction<boolean>) {
+            state.isCollapsed = action.payload
+        }
     }
-}
+})
 
+export default sidebarSlice.reducer
 
-export const setIsCollapsedAC = (status: boolean) => ({
-    type: "SIDEBAR/SET-IS-COLLAPSED", status
-} as const)
-
-type ActionsType = ReturnType<typeof setIsCollapsedAC>
+export const {setIsCollapsed} = sidebarSlice.actions

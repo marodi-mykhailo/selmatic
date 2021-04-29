@@ -8,12 +8,11 @@ import {
     MailOutlined, RocketOutlined, SettingOutlined,
     ShoppingCartOutlined, StockOutlined,
     SyncOutlined, UsergroupAddOutlined,
-    UserOutlined
 } from "@ant-design/icons";
 import triggerImg from '../../assets/img/sidebar_trigger.jpeg'
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import {setIsCollapsedAC} from "./sidebar.reducer";
+import {setIsCollapsed} from "./sidebar.reducer";
 
 const {SubMenu, Item} = Menu
 
@@ -28,7 +27,7 @@ const SideBar = () => {
     const [time, setTime] = useState('')
 
     const onCollapse = () => {
-        dispatch(setIsCollapsedAC(!isCollapsed))
+        dispatch(setIsCollapsed(!isCollapsed))
     }
 
     const getTime = () => {

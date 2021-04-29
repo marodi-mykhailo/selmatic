@@ -145,6 +145,7 @@ const TransactionTable = () => {
         <div>
             <Table dataSource={dataSource}
                    columns={columns}
+                   bordered
             />
         </div>
     );
