@@ -5,6 +5,7 @@ import {v1} from "uuid";
 import DashboardSteps from "../../components/DashboardSteps/DashboardSteps";
 import StatCard from "../../components/StatCard/StatCard";
 import ChartComponent from "../../components/ChartComponent/ChartComponent";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -15,9 +16,7 @@ const steps: Array<MBreadcrumbItemType> = [{
 const Dashboard = () => {
     return (
         <div className={"dashboard"}>
-            <h1 className={"page-title"}>Dashboard
-                <small> podsumowanie & statystyki</small>
-            </h1>
+            <PageTitle title={"Dashboard"} subtitle={"podsumowanie & statystyki"}/>
             <MBreadcrumb steps={steps}/>
             <div className={"dashboard__steps-container self_clear"}>
                 <DashboardSteps/>

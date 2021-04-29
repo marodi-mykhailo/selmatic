@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import {Content} from "antd/es/layout/layout";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store";
+import Transactions from "./pages/Transakcje/Transakcje";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
@@ -20,6 +21,7 @@ function App() {
                          className={"content"}
                 >
                     <Dashboard/>
+                    <Transactions/>
                 </Content>
             </Layout>
         </Layout>

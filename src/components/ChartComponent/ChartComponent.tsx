@@ -70,7 +70,7 @@ const ChartComponent = ({title, pointBackgroundColor, pointBorderColor, tooltipT
     };
 
     return (
-        <div className={"chart"}>
+        <div className={"chart content-box"}>
             <div className={"chart__top"}>
                 <p className={"chart__top-title"}><i className="far fa-chart-bar"/>{title}</p>
             </div>
