@@ -3,6 +3,7 @@ import './Transakcje.scss';
 import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBreadcrumb";
 import {v1} from "uuid";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import ContentBox from "../../components/ContentBox/ContentBox";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -15,7 +16,7 @@ const Transactions = () => {
         <div>
             <PageTitle title={"Transakcje"} subtitle={"lista transakcji Allegro"}/>
             <MBreadcrumb steps={steps}/>
-            <div className={"content-box"}></div>
+            <ContentBox title={"LISTA TRANSAKCJI ALLEGRO"} className={"light"}/>
         </div>
     );
 };

@@ -20,7 +20,7 @@ function App() {
                 <Content style={{marginLeft: isCollapsed ? "80px" : "235px"}}
                          className={"content"}
                 >
-                    <Dashboard/>
+                    {/*<Dashboard/>*/}
                     <Transactions/>
                 </Content>
             </Layout>
