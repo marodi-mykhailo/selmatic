@@ -4,6 +4,7 @@ import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBr
 import {v1} from "uuid";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import ContentBox from "../../components/ContentBox/ContentBox";
+import TransactionTable from "../../components/TransactionTable/TransactionTable";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -12,11 +13,18 @@ const steps: Array<MBreadcrumbItemType> = [{
 }]
 
 const Transactions = () => {
+
+    const columns = [{
+        title: ""
+    }]
+
     return (
         <div>
             <PageTitle title={"Transakcje"} subtitle={"lista transakcji Allegro"}/>
             <MBreadcrumb steps={steps}/>
-            <ContentBox title={"LISTA TRANSAKCJI ALLEGRO"} className={"light"}/>
+            <ContentBox title={"LISTA TRANSAKCJI ALLEGRO"} className={"light"}>
+                <TransactionTable/>
+            </ContentBox>
         </div>
     );
 };
