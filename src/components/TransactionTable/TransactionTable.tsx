@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './TransactionTable.scss';
-import {Table} from "antd";
+import {Input, Table} from "antd";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import {transitionTableReducerStateType} from "./transactionTable.reducer";
+import {
+    transitionTableReducerStateType
+} from "./transactionTable.reducer";
 
 const columns = [
     {
@@ -51,9 +53,29 @@ const columns = [
 
 const TransactionTable = () => {
     const data = useSelector<AppRootStateType, transitionTableReducerStateType>(state => state.transitionTable)
+
+    const [filteredData, setFilteredData] = useState<transitionTableReducerStateType>()
+
+    useEffect(() => {
+        setFilteredData(data)
+    }, [])
+
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.currentTarget.value.length > 0) {
+            let filtered = filteredData?.filter(item => item.aukcja.includes(e.currentTarget.value))
+            setFilteredData(filtered)
+        } else {
+            setFilteredData(data)
+        }
+    }
+
     return (
-        <div>
-            <Table dataSource={data}
+        <div className={"transactionTable"}>
+            <Input.Search className={"transactionTable__search"}
+                          onChange={onChangeHandler}
+                          placeholder={"Search..."}
+                          allowClear/>
+            <Table dataSource={filteredData}
                    columns={columns}
                    bordered
             />

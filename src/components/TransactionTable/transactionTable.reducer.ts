@@ -10,7 +10,6 @@ type transitionTableItemType = {
     kodWyslany: string
     platnosc: string
     szczegoly: string
-
 }
 
 export type transitionTableReducerStateType = Array<transitionTableItemType>
@@ -29,7 +28,7 @@ const initialState: transitionTableReducerStateType = [
     },
     {
         key: '2',
-        aukcja: 'aukcja',
+        aukcja: 'mecha',
         klient: "klient",
         sztuk: 'sztuk',
         cenaSztuka: 'cenaSztuka',
@@ -39,7 +38,7 @@ const initialState: transitionTableReducerStateType = [
         szczegoly: 'szczegoly',
     }, {
         key: '3',
-        aukcja: 'aukcja',
+        aukcja: 'dascw',
         klient: "klient",
         sztuk: 'sztuk',
         cenaSztuka: 'cenaSztuka',
@@ -49,7 +48,7 @@ const initialState: transitionTableReducerStateType = [
         szczegoly: 'szczegoly',
     }, {
         key: '4',
-        aukcja: 'aukcja',
+        aukcja: 'lfgr',
         klient: "klient",
         sztuk: 'sztuk',
         cenaSztuka: 'cenaSztuka',
@@ -59,7 +58,7 @@ const initialState: transitionTableReducerStateType = [
         szczegoly: 'szczegoly',
     }, {
         key: '5',
-        aukcja: 'aukcja',
+        aukcja: 'idicv',
         klient: "klient",
         sztuk: 'sztuk',
         cenaSztuka: 'cenaSztuka',
@@ -69,7 +68,7 @@ const initialState: transitionTableReducerStateType = [
         szczegoly: 'szczegoly',
     }, {
         key: '6',
-        aukcja: 'aukcja',
+        aukcja: 'eeeer',
         klient: "klient",
         sztuk: 'sztuk',
         cenaSztuka: 'cenaSztuka',
@@ -79,7 +78,7 @@ const initialState: transitionTableReducerStateType = [
         szczegoly: 'szczegoly',
     }, {
         key: '7',
-        aukcja: 'aukcja',
+        aukcja: 'eewer',
         klient: "klient",
         sztuk: 'sztuk',
         cenaSztuka: 'cenaSztuka',
@@ -108,14 +107,12 @@ const initialState: transitionTableReducerStateType = [
         platnosc: 'platnosc',
         szczegoly: 'szczegoly',
     },
-];
+]
 
 const transactionTableSlice = createSlice({
     name: "transactionTable",
     initialState,
-    reducers: {
-
-    }
+    reducers: {}
 })
 
 export default transactionTableSlice.reducer
