@@ -37,7 +37,7 @@
   background: #fff;
 }
 
-.ant-breadcrumb-separator{
+.ant-breadcrumb-separator {
   vertical-align: text-bottom;
 }
 
@@ -64,11 +64,19 @@
     font-size: 14px;
     text-shadow: none;
 
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }
 }
+
+
+/// THEADER FOR TABLE ///
+
+.ant-table-thead > tr > th {
+  font-weight: 700 !important;
+}
+
 
 
 

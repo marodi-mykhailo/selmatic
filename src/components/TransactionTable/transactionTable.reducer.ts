@@ -115,4 +115,4 @@ const transactionTableSlice = createSlice({
     reducers: {}
 })
 
-export default transactionTableSlice.reducer
+export default transactionTableSlice.reducer;

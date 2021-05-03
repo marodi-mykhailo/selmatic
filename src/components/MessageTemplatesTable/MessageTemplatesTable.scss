@@ -1,0 +1,34 @@
+.messageTemplateTable {
+
+  &__search {
+    width: 15%;
+    display: block;
+    margin: 10px 0 10px auto;
+  }
+
+  &__options {
+    &-icon {
+
+      font-size: 16px;
+      color: #FFFFFF;
+      text-align: center;
+
+      &:hover {
+
+      }
+
+
+      &--settings {
+        background-color: #8AC3F4;
+      }
+
+      &--flag {
+        background-color: #00BCD4;
+      }
+
+      &--delete {
+        background-color: #F3565D;
+      }
+    }
+  }
+}

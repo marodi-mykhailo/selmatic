@@ -8,6 +8,7 @@ import {Content} from "antd/es/layout/layout";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store";
 import Transactions from "./pages/Transakcje/Transakcje";
+import MessageTemplates from "./pages/MessageTemplates/MessageTemplates";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
@@ -21,7 +22,8 @@ function App() {
                          className={"content"}
                 >
                     {/*<Dashboard/>*/}
-                    <Transactions/>
+                    {/*<Transactions/>*/}
+                    <MessageTemplates/>
                 </Content>
             </Layout>
         </Layout>

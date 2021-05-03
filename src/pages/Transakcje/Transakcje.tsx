@@ -13,11 +13,6 @@ const steps: Array<MBreadcrumbItemType> = [{
 }]
 
 const Transactions = () => {
-
-    const columns = [{
-        title: ""
-    }]
-
     return (
         <div>
             <PageTitle title={"Transakcje"} subtitle={"lista transakcji Allegro"}/>

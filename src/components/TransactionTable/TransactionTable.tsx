@@ -69,7 +69,7 @@ const TransactionTable = () => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.currentTarget.value.length > 0) {
-            let filtered = filteredData?.filter(item => item.aukcja.includes(e.currentTarget.value))
+            let filtered = filteredData?.filter(item => item.aukcja.toLowerCase().includes(e.currentTarget.value))
             setFilteredData(filtered)
         } else {
             setFilteredData(data)
