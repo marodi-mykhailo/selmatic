@@ -1,7 +1,7 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import sidebarSlice from "../components/SideBar/sidebar.reducer";
-import transactionTableSlice from "../components/TransactionTable/transactionTable.reducer"
-import messageTemplatesTableSlice from "../components/MessageTemplatesTable/messageTemplatesTable.reducer";
+import transactionTableSlice from "./transactionTable.reducer"
+import messageTemplatesTableSlice from "./messageTemplatesTable.reducer";
 
 const rootReducer = combineReducers({
     sidebar: sidebarSlice,
