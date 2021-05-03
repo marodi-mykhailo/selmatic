@@ -1,5 +1,4 @@
 import React from 'react';
-import MessageTemplatesTable from "../../components/MessageTemplatesTable/MessageTemplatesTable";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBreadcrumb";
 import {v1} from "uuid";

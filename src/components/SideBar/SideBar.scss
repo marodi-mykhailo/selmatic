@@ -34,6 +34,15 @@
     &-item {
       color: #b4bcc8;
 
+      & a {
+        color: #b4bcc8;
+
+        &:hover {
+          background-color: #394756;
+          color: #b4bcc8;
+        }
+      }
+
       &:hover {
         background-color: #394756;
         color: #b4bcc8;

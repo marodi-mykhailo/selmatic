@@ -4,7 +4,6 @@ import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBr
 import {v1} from "uuid";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import ContentBox from "../../components/ContentBox/ContentBox";
-import TransactionTable from "../../components/TransactionTable/TransactionTable";
 import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";

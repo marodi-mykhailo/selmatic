@@ -13,6 +13,7 @@ import triggerImg from '../../assets/img/sidebar_trigger.jpeg'
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
 import {setIsCollapsed} from "./sidebar.reducer";
+import {NavLink} from 'react-router-dom';
 
 const {SubMenu, Item} = Menu
 
@@ -73,12 +74,20 @@ const SideBar = () => {
                     <Item className={"sidebar__nav-item"}
                           key={"1"}
                           icon={<HomeOutlined/>}>
-                        Dashboard
+                        <NavLink activeClassName={"nav-link--active"}
+                                 to={"/"}
+                        >
+                            Dashboard
+                        </NavLink>
                     </Item>
                     <Item className={"sidebar__nav-item"}
                           key={"2"}
                           icon={<ShoppingCartOutlined/>}>
-                        Transakcje
+                        <NavLink activeClassName={"nav-link--active"}
+                                 to={"/transactions"}
+                        >
+                            Transakcje
+                        </NavLink>
                     </Item>
                     <Item className={"sidebar__nav-item"}
                           key={"3"}
@@ -91,7 +100,11 @@ const SideBar = () => {
                              title={"Szablony wiadomości"}>
                         <Item className={"sidebar__nav-item"}
                               key={"4"}>
-                            Lista szablonów
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/templates"}
+                            >
+                                Lista szablonów
+                            </NavLink>
                         </Item>
 
                         <Item className={"sidebar__nav-item"}
