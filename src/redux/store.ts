@@ -3,12 +3,14 @@ import sidebarSlice from "../components/SideBar/sidebar.reducer";
 import transactionTableSlice from "./transactionTable.reducer"
 import messageTemplatesTableSlice from "./messageTemplatesTable.reducer";
 import codeDatabaseTableSlice from "./codeDatabaseTable.reducer";
+import monitoringTableSlice from './monitoringTable.reducer';
 
 const rootReducer = combineReducers({
     sidebar: sidebarSlice,
     transitionTable: transactionTableSlice,
     messageTemplatesTable: messageTemplatesTableSlice,
-    codeDatabaseTable: codeDatabaseTableSlice
+    codeDatabaseTable: codeDatabaseTableSlice,
+    monitoringTable: monitoringTableSlice
 })
 
 export const store = configureStore({

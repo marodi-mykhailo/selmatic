@@ -11,6 +11,7 @@ import Transactions from "./pages/Transakcje/Transakcje";
 import MessageTemplates from "./pages/MessageTemplates/MessageTemplates";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import CodeDatabase from "./pages/CodeDatabase/CodeDatabase";
+import Monitoring from "./pages/Monitoring/Monitoring";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
@@ -28,6 +29,7 @@ function App() {
                         <Route path={'/transactions'} render={() => <Transactions/>}/>
                         <Route path={'/templates'} render={() => <MessageTemplates/>}/>
                         <Route path={'/databases'} render={() => <CodeDatabase/>}/>
+                        <Route path={'/monitoring'} render={() => <Monitoring/>}/>
                         <Route path={'/404'} render={() => <h1 className={"header-404"}>404 Page not found</h1>}/>
                         <Redirect from={'*'} to={'/404'}/>
                     </Switch>

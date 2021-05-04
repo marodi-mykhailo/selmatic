@@ -1,0 +1,14 @@
+.monitoringTable {
+  &__options {
+    &-item {
+      font-size: 14px;
+      padding: 0 3px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+
+      }
+    }
+  }
+}

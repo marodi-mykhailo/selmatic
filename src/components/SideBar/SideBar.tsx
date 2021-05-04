@@ -92,7 +92,11 @@ const SideBar = () => {
                     <Item className={"sidebar__nav-item"}
                           key={"3"}
                           icon={<BarsOutlined/>}>
-                        Monitoring
+                        <NavLink activeClassName={"nav-link--active"}
+                                 to={"/monitoring"}
+                        >
+                            Monitoring
+                        </NavLink>
                     </Item>
                     <SubMenu className={"sidebar__nav-item"}
                              key={"sub1"}
