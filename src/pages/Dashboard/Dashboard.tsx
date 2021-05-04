@@ -10,7 +10,7 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
     name: "Dashboard",
-    link: "#"
+    link: ""
 }]
 
 const Dashboard = () => {

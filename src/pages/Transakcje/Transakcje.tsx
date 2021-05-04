@@ -12,7 +12,7 @@ import {transitionTableReducerStateType} from "../../redux/transactionTable.redu
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
     name: "Transakcje",
-    link: "#"
+    link: ""
 }]
 
 

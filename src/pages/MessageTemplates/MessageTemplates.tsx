@@ -12,7 +12,7 @@ import {Button, Space} from "antd";
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
     name: "Lista szablonów wiadomości",
-    link: "#"
+    link: ""
 }]
 
 const columns = [

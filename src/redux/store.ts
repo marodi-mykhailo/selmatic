@@ -2,11 +2,13 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import sidebarSlice from "../components/SideBar/sidebar.reducer";
 import transactionTableSlice from "./transactionTable.reducer"
 import messageTemplatesTableSlice from "./messageTemplatesTable.reducer";
+import codeDatabaseTableSlice from "./codeDatabaseTable.reducer";
 
 const rootReducer = combineReducers({
     sidebar: sidebarSlice,
     transitionTable: transactionTableSlice,
-    messageTemplatesTable: messageTemplatesTableSlice
+    messageTemplatesTable: messageTemplatesTableSlice,
+    codeDatabaseTable: codeDatabaseTableSlice
 })
 
 export const store = configureStore({
