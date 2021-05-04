@@ -31,3 +31,27 @@
     }
   }
 }
+
+
+.table-striped-rows {
+
+  table {
+    border-collapse: collapse;
+  }
+
+  tr td {
+    border: 1px solid #E1E1E1 !important;
+  }
+
+  tr:nth-child(2n) td {
+    background-color: #F9F9F9;
+  }
+
+  thead {
+    background-color: #F9F9F9;
+  }
+
+  thead tr th {
+    border: 1px solid #E1E1E1 !important;
+  }
+}

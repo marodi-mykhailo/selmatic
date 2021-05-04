@@ -38,18 +38,17 @@ const StatisticsTable = ({data, searchAttr, columns}: StatisticsTablePropsType) 
 
 
     return (
-        <div>
-            <div className={"statisticsTable"}>
-                <Input.Search className={"statisticsTable__search"}
-                              onChange={onChangeHandler}
-                              placeholder={"Search..."}
-                              allowClear/>
-                <Table dataSource={filteredData}
-                       columns={columns}
-                       pagination={pagination}
-                       bordered
-                />
-            </div>
+        <div className={"statisticsTable"}>
+            <Input.Search className={"statisticsTable__search"}
+                          onChange={onChangeHandler}
+                          placeholder={"Search..."}
+                          allowClear/>
+            <Table dataSource={filteredData}
+                   columns={columns}
+                   pagination={pagination}
+                   className={"table-striped-rows"}
+                   bordered
+            />
         </div>
     );
 };
