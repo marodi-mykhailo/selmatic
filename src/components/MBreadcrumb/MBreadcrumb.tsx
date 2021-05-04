@@ -20,7 +20,7 @@ const MBreadcrumb = ({steps}: MBreadcrumbPropsType) => {
             <Breadcrumb className={"page-breadcrumb"}
                         separator={<RightOutlined style={{fontSize: "8px"}} />}>
                 <Item className={"page-breadcrumb-item"}
-                      href={"#"}>
+                      href={"/"}>
                     <HomeFilled className={"page-breadcrumb-icon"}/>
                     Home
                 </Item>
