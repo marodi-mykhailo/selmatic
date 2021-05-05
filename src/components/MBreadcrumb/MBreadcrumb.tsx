@@ -6,7 +6,7 @@ const {Item} = Breadcrumb;
 
 export type MBreadcrumbItemType = {
     id: string
-    name: string,
+    name: string | undefined,
     link: string
 }
 
@@ -18,7 +18,7 @@ const MBreadcrumb = ({steps}: MBreadcrumbPropsType) => {
     return (
         <div className={"page-bar"}>
             <Breadcrumb className={"page-breadcrumb"}
-                        separator={<RightOutlined style={{fontSize: "8px"}} />}>
+                        separator={<RightOutlined style={{fontSize: "8px"}}/>}>
                 <Item className={"page-breadcrumb-item"}
                       href={"/"}>
                     <HomeFilled className={"page-breadcrumb-icon"}/>

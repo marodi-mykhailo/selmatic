@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-type CustomersTableItemType = {
+export type CustomersTableItemType = {
     key: string
     id: string
     username: string

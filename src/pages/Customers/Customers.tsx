@@ -9,6 +9,7 @@ import {AppRootStateType} from "../../redux/store";
 import {CodeDatabaseTableType} from "../../redux/codeDatabaseTable.reducer";
 import {Button, Space} from "antd";
 import {CustomersTableType} from "../../redux/customersTable.reducer";
+import {NavLink, useHistory} from 'react-router-dom';
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -41,8 +42,9 @@ const columns = [
             return (
                 <Button
                     className={"statisticsTable__customers__button"}
-                    size={"middle"}>
-                    Sczegóły
+                    size={"middle"}
+                >
+                    <NavLink to={`/customers/${record.id}`}>Sczegóły</NavLink>
                 </Button>
             )
         }
@@ -51,6 +53,8 @@ const columns = [
 
 const Customers = () => {
     const data = useSelector<AppRootStateType, CustomersTableType>(state => state.customersTable)
+
+
 
     return (
         <div>

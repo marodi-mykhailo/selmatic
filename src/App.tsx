@@ -14,6 +14,7 @@ import CodeDatabase from "./pages/CodeDatabase/CodeDatabase";
 import Monitoring from "./pages/Monitoring/Monitoring";
 import TextEditor from "./components/TextEditor/TextEditor";
 import Customers from "./pages/Customers/Customers";
+import CustomersInfo from "./pages/CustomersInfo/CustomersInfo";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
@@ -32,6 +33,7 @@ function App() {
                         <Route path={'/templates'} render={() => <MessageTemplates/>}/>
                         <Route path={'/databases'} render={() => <CodeDatabase/>}/>
                         <Route path={'/monitoring'} render={() => <Monitoring/>}/>
+                        <Route path={'/customers/:id'} render={() => <CustomersInfo/>}/>
                         <Route path={'/customers'} render={() => <Customers/>}/>
                         <Route path={'/404'} render={() => <h1 className={"header-404"}>404 Page not found</h1>}/>
                         <Redirect from={'*'} to={'/404'}/>
