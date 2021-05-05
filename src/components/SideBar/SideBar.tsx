@@ -174,7 +174,11 @@ const SideBar = () => {
                     <Item className={"sidebar__nav-item"}
                           key={"14"}
                           icon={<UsergroupAddOutlined/>}>
-                        Klienci
+                        <NavLink activeClassName={"nav-link--active"}
+                                 to={"/customers"}
+                        >
+                            Klienci
+                        </NavLink>
                     </Item>
                     <Item className={"sidebar__nav-item"}
                           key={"15"}

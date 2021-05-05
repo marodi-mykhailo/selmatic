@@ -4,13 +4,15 @@ import transactionTableSlice from "./transactionTable.reducer"
 import messageTemplatesTableSlice from "./messageTemplatesTable.reducer";
 import codeDatabaseTableSlice from "./codeDatabaseTable.reducer";
 import monitoringTableSlice from './monitoringTable.reducer';
+import customersTableSlice from './customersTable.reducer';
 
 const rootReducer = combineReducers({
     sidebar: sidebarSlice,
     transitionTable: transactionTableSlice,
     messageTemplatesTable: messageTemplatesTableSlice,
     codeDatabaseTable: codeDatabaseTableSlice,
-    monitoringTable: monitoringTableSlice
+    monitoringTable: monitoringTableSlice,
+    customersTable: customersTableSlice
 })
 
 export const store = configureStore({

@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-type codeDatabaseTableItemType = {
+type CodeDatabaseTableItemType = {
     key: string
     id: string
     nazwaBazy: string
@@ -11,9 +11,9 @@ type codeDatabaseTableItemType = {
     typBazy: string /// dopisać typy
 }
 
-export type codeDatabaseTableType = Array<codeDatabaseTableItemType>
+export type CodeDatabaseTableType = Array<CodeDatabaseTableItemType>
 
-const initialState: codeDatabaseTableType = [
+const initialState: CodeDatabaseTableType = [
     {
         key: "1",
         id: "1",

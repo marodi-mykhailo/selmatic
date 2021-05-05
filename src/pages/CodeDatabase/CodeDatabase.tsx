@@ -8,7 +8,7 @@ import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
 import {Button, Space} from "antd";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import {codeDatabaseTableType} from "../../redux/codeDatabaseTable.reducer";
+import {CodeDatabaseTableType} from "../../redux/codeDatabaseTable.reducer";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -74,7 +74,7 @@ const columns = [
 
 const CodeDatabase = () => {
 
-    const data = useSelector<AppRootStateType, codeDatabaseTableType>(state => state.codeDatabaseTable)
+    const data = useSelector<AppRootStateType, CodeDatabaseTableType>(state => state.codeDatabaseTable)
 
     return (
         <div>
