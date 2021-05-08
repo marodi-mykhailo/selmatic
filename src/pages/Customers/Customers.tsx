@@ -6,10 +6,9 @@ import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
 import ContentBox from "../../components/ContentBox/ContentBox";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import {CodeDatabaseTableType} from "../../redux/codeDatabaseTable.reducer";
-import {Button, Space} from "antd";
+import {Button} from "antd";
 import {CustomersTableType} from "../../redux/customersTable.reducer";
-import {NavLink, useHistory} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
