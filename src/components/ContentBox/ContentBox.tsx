@@ -5,13 +5,20 @@ type ContentBoxPropsType = {
     title: string
     className?: string
     contentClassName?: string
+    icon?: string
 }
 
-const ContentBox: FunctionComponent<ContentBoxPropsType> = ({title, className, contentClassName, children}) => {
+const ContentBox: FunctionComponent<ContentBoxPropsType> = ({
+                                                                title,
+                                                                className,
+                                                                contentClassName,
+                                                                children,
+                                                                icon = "fas fa-link"
+                                                            }) => {
     return (
         <div className={`content__box ${className}`}>
             <h1 className={"content__box-title"}>
-                <i className="fas fa-link"/>
+                <i className={`${icon}`}/>
                 {title}</h1>
             <div className={`content__box-content ${contentClassName}`}>
                 {children}
