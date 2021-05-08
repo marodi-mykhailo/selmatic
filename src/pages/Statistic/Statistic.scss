@@ -1,0 +1,12 @@
+.statistic{
+  &__card{
+    &__wrapper{
+      display: flex;
+      flex-wrap: wrap;
+
+      .statCard{
+        width: 25%;
+      }
+    }
+  }
+}
