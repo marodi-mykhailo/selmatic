@@ -1,10 +1,11 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import sidebarSlice from "../components/SideBar/sidebar.reducer";
+import sidebarSlice from "./sidebar.reducer";
 import transactionTableSlice from "./transactionTable.reducer"
 import messageTemplatesTableSlice from "./messageTemplatesTable.reducer";
 import codeDatabaseTableSlice from "./codeDatabaseTable.reducer";
 import monitoringTableSlice from './monitoringTable.reducer';
 import customersTableSlice from './customersTable.reducer';
+import appSlice from './app.reducer';
 
 const rootReducer = combineReducers({
     sidebar: sidebarSlice,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     messageTemplatesTable: messageTemplatesTableSlice,
     codeDatabaseTable: codeDatabaseTableSlice,
     monitoringTable: monitoringTableSlice,
-    customersTable: customersTableSlice
+    customersTable: customersTableSlice,
+    app: appSlice,
 })
 
 export const store = configureStore({

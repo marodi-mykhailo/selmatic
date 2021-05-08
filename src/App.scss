@@ -1,9 +1,9 @@
 /// CONTENT ///
 
+
 .content {
   transition: margin-left .6s;
   padding: 60px 25px 20px;
-
 }
 
 
@@ -43,7 +43,7 @@
 
 /// COMMON TO PAGES ///
 .page-bar {
-  padding: 0px;
+  padding: 0;
   background-color: #f7f7f7;
   margin-bottom: 25px;
 }
@@ -102,4 +102,86 @@
 
 .text-red {
   color: #C23E6A;
+}
+
+/// custom-input ///
+
+.custom-input {
+  border: none;
+  background-color: inherit;
+  border-bottom: 2px solid #e5e5e5;
+  padding-left: 0;
+
+  &:hover {
+    border-bottom: 2px solid #e5e5e5;
+  }
+
+  &:focus {
+    border-color: black;
+    box-shadow: none;
+    border-bottom: 2px solid;
+    border-bottom-color: #4CB8B0;
+    transition: 1s ease all;
+
+  }
+}
+
+/// custom-select ///
+
+.custom-select {
+
+  .ant-select-selector {
+    border: none !important;
+    background-color: inherit !important;
+    border-bottom: 2px solid #e5e5e5 !important;
+    padding-left: 0 !important;
+  }
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  box-shadow: none;
+  border-bottom: 2px solid !important;
+  border-bottom-color: #66afe9 !important;
+  transition: 1s ease all;
+
+}
+
+.ant-select-single.ant-select-show-arrow .ant-select-selection-search {
+  left: 0;
+}
+
+/// custom-text-area ///
+
+.custom-text-area {
+  height: 200px !important;
+}
+
+/// margins ///
+
+.mtb-60 {
+  margin: 60px 0;
+}
+
+/// btn ///
+
+.btn {
+  color: #FFFFFF;
+  background-color: #00BCD4;
+  border-color: #00a5bb;
+  font-size: 14px;
+  text-transform: uppercase;
+
+  &:focus, &:hover, &:active {
+    color: #FFFFFF;
+    background-color: #009cb0;
+    border-color: #007888;
+  }
+
+  &--green {
+    background-color: #26a69a;
+
+    &:focus, &:hover, &:active {
+      background-color: #1f897f;
+    }
+  }
 }
