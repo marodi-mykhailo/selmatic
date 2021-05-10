@@ -26,6 +26,9 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+
+        changeToTablet()
+
         window.addEventListener('resize', changeToTablet)
 
         return () => {
@@ -37,20 +40,24 @@ function App() {
 
     function changeToTablet() {
 
-        if (window.innerWidth < 482 && !isMobile) {
+        if (window.outerWidth < 482 && !isMobile) {
             dispatch(setIsMobile())
         }
 
-        if (window.innerWidth > 482 && window.innerWidth < 992 && !isTablet) {
+        if (window.outerWidth < 992 && window.outerWidth > 482 && !isTablet) {
             console.log(isTablet)
             dispatch(setIsTablet())
         }
 
-        if (window.innerWidth > 992 && !isDesktop) {
+        if (window.outerWidth > 992 && !isDesktop) {
             dispatch(setIsDesktop())
         }
 
 
+    }
+
+    const getLeftMargin = () => {
+        return (isTablet || isMobile) ? "0" : isCollapsed ? "80px" : "235px"
     }
 
 
@@ -58,8 +65,8 @@ function App() {
         <Layout>
             <MHeader/>
             <Layout>
-                <SideBar/>
-                <Content style={{marginLeft: isCollapsed ? "80px" : "235px"}}
+                {!(isTablet || isMobile) && < SideBar/>}
+                <Content style={{marginLeft: getLeftMargin()}}
                          className={"content"}
                 >
                     <Switch>
