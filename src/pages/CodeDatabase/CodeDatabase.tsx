@@ -20,11 +20,13 @@ const columns = [
     {
         title: "ID",
         dataIndex: "id",
-        key: "id"
+        key: "id",
+        fixed: "left"
     }, {
         title: "Nazwa bazy",
         dataIndex: "nazwaBazy",
-        key: "nazwaBazy"
+        key: "nazwaBazy",
+        fixed: "left"
     },
     {
         title: "Data dodania",

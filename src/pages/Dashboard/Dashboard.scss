@@ -1,4 +1,11 @@
 .dashboard {
+  width: 100%;
+
+  &__charts{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 
   &__steps {
     &-container {
@@ -8,12 +15,6 @@
   }
 
   &__statCards {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__charts{
-    width: 100%;
     display: flex;
     justify-content: space-between;
   }

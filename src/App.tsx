@@ -18,6 +18,7 @@ import CustomersInfo from "./pages/CustomersInfo/CustomersInfo";
 import NewCodeDatabase from "./pages/CodeDatabase/NewCodeDatabase/NewCodeDatabase";
 import Statistic from "./pages/Statistic/Statistic";
 import {appReducerType, setIsDesktop, setIsMobile, setIsTablet} from './redux/app.reducer';
+import {setIsCollapsed} from "./redux/sidebar.reducer";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
@@ -42,11 +43,13 @@ function App() {
 
         if (window.outerWidth < 482 && !isMobile) {
             dispatch(setIsMobile())
+            dispatch(setIsCollapsed(false))
         }
 
         if (window.outerWidth < 992 && window.outerWidth > 482 && !isTablet) {
             console.log(isTablet)
             dispatch(setIsTablet())
+            dispatch(setIsCollapsed(false))
         }
 
         if (window.outerWidth > 992 && !isDesktop) {
@@ -64,6 +67,7 @@ function App() {
     return (
         <Layout>
             <MHeader/>
+            {isCollapsed && (isTablet || isMobile) && <div className={"hide-header-height"}/>}
             <Layout>
                 {!(isTablet || isMobile) && < SideBar/>}
                 <Content style={{marginLeft: getLeftMargin()}}

@@ -1,26 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import './SideBar.scss';
-import Sider from "antd/es/layout/Sider";
+import './MobileSideBar.scss';
 import {Menu} from "antd";
 import {
     BarsOutlined, CreditCardOutlined, DingtalkOutlined,
     HomeOutlined, LinkOutlined,
-    MailOutlined, RocketOutlined, SettingOutlined,
+    MailOutlined,
+    RocketOutlined, SettingOutlined,
     ShoppingCartOutlined, StockOutlined,
-    SyncOutlined, UsergroupAddOutlined,
+    SyncOutlined, UsergroupAddOutlined
 } from "@ant-design/icons";
-import triggerImg from '../../assets/img/sidebar_trigger.jpeg'
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../redux/store";
-import {setIsCollapsed} from "../../redux/sidebar.reducer";
-import {NavLink} from 'react-router-dom';
+import {NavLink} from "react-router-dom";
 import {getTime} from "../../assets/helpers/getTime";
+
 
 const {SubMenu, Item} = Menu
 
-const SideBar = () => {
-    const dispatch = useDispatch()
-    const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
+type MobileSideBarPropsType = {
+    isCollapsed: boolean
+}
+
+
+const MobileSideBar = ({isCollapsed}: MobileSideBarPropsType) => {
+
 
     useEffect(() => {
         getTime()
@@ -28,23 +29,13 @@ const SideBar = () => {
 
     const [time, setTime] = useState('')
 
-    const onCollapse = () => {
-        dispatch(setIsCollapsed(!isCollapsed))
-    }
-
     setTimeout(() => setTime(getTime()), 1000)
 
     return (
-        <Sider className={"sidebar"}
-               width={235}
-               trigger={null}
-               collapsible
-               collapsed={isCollapsed}>
-            <div className={"self_clear"}>
-                <div style={{backgroundImage: `url(${triggerImg})`}} className={"trigger"} onClick={onCollapse}/>
-            </div>
+        <div style={!isCollapsed ? {height: "0", paddingTop: "0"} : {height: "750px"}}
+             className={"mobile-sidebar"}>
             <div className={"sidebar__nav"}>
-                {!isCollapsed ? <h1 className={"sidebar__nav-title"}>Sesja</h1> : <hr className={"sidebar__nav-hr"}/>}
+                <h1 className={"sidebar__nav-title"}>Sesja</h1>
                 <Menu className={"sidebar__nav-menu"}
                       theme="light"
                       mode="inline"
@@ -58,8 +49,7 @@ const SideBar = () => {
                 </Menu>
             </div>
             <div className={"sidebar__nav"}>
-                {!isCollapsed ? <h1 className={"sidebar__nav-title"}>Navigacja</h1> :
-                    <hr className={"sidebar__nav-hr"}/>}
+                <h1 className={"sidebar__nav-title"}>Navigacja</h1>
                 <Menu className={"sidebar__nav-menu"}
                       theme="light"
                       mode="inline"
@@ -214,9 +204,8 @@ const SideBar = () => {
                     />
                 </Menu>
             </div>
-
-        </Sider>
+        </div>
     );
 };
 
-export default SideBar;
+export default MobileSideBar;

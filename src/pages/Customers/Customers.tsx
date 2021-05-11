@@ -9,6 +9,7 @@ import {AppRootStateType} from "../../redux/store";
 import {Button} from "antd";
 import {CustomersTableType} from "../../redux/customersTable.reducer";
 import {NavLink} from 'react-router-dom';
+import {appReducerType} from "../../redux/app.reducer";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -16,44 +17,47 @@ const steps: Array<MBreadcrumbItemType> = [{
     link: ""
 }]
 
-const columns = [
-    {
-        title: "Nazwa użytkownika",
-        dataIndex: "username",
-        key: "username"
-    }, {
-        title: "Imię i nazwisko",
-        dataIndex: "firstLastName",
-        key: "firstLastName"
-    }, {
-        title: "City",
-        dataIndex: "city",
-        key: "city"
-    }, {
-        title: "Adres e-mail",
-        dataIndex: "email",
-        key: "email"
-    }, {
-        title: "Operacje",
-        dataIndex: "operacje",
-        key: "operacje",
-        render: (text: any, record: any) => {
-            return (
-                <Button
-                    className={"statisticsTable__customers__button"}
-                    size={"middle"}
-                >
-                    <NavLink to={`/customers/${record.id}`}>Sczegóły</NavLink>
-                </Button>
-            )
-        }
-    }
-]
 
 const Customers = () => {
     const data = useSelector<AppRootStateType, CustomersTableType>(state => state.customersTable)
 
+    const {isMobile} = useSelector<AppRootStateType, appReducerType>(state => state.app)
 
+
+    const columns = [
+        {
+            title: "Nazwa użytkownika",
+            dataIndex: "username",
+            key: "username",
+            fixed: !isMobile && "left"
+        }, {
+            title: "Imię i nazwisko",
+            dataIndex: "firstLastName",
+            key: "firstLastName"
+        }, {
+            title: "City",
+            dataIndex: "city",
+            key: "city"
+        }, {
+            title: "Adres e-mail",
+            dataIndex: "email",
+            key: "email"
+        }, {
+            title: "Operacje",
+            dataIndex: "operacje",
+            key: "operacje",
+            render: (text: any, record: any) => {
+                return (
+                    <Button
+                        className={"statisticsTable__customers__button"}
+                        size={"middle"}
+                    >
+                        <NavLink to={`/customers/${record.id}`}>Sczegóły</NavLink>
+                    </Button>
+                )
+            }
+        }
+    ]
 
     return (
         <div>

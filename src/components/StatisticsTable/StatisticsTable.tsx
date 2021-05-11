@@ -3,6 +3,7 @@ import './StatisticsTable.scss';
 import {Input, Table} from "antd";
 import {transitionTableReducerStateType} from "../../redux/transactionTable.reducer";
 
+
 type StatisticsTablePropsType = {
     data: any
     searchAttr: string
@@ -17,6 +18,7 @@ const pagination = {
 }
 
 const StatisticsTable = ({data, searchAttr, columns}: StatisticsTablePropsType) => {
+
 
     const [filteredData, setFilteredData] = useState<transitionTableReducerStateType>()
 
@@ -48,6 +50,7 @@ const StatisticsTable = ({data, searchAttr, columns}: StatisticsTablePropsType) 
                    pagination={pagination}
                    className={"table-striped-rows"}
                    bordered
+                   scroll={{ x: 1000 }}
             />
         </div>
     );

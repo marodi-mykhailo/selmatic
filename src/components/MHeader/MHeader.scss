@@ -49,6 +49,7 @@
           font-size: 13px;
           color: #62878f;
           padding: 10px;
+          margin: 0;
         }
 
         &-content {
@@ -81,6 +82,8 @@
 
       &-dropdown {
         width: 195px;
+        background-color: #FFFFFF;
+
 
         &-list {
           list-style: none;
@@ -108,6 +111,42 @@
       }
     }
   }
+
+
 }
 
+.header-mobile {
+  background-color: #364250;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 42px;
+  height: max-content;
+  padding: 20px 0;
+  transition: all .5s;
+
+  &-switcher {
+    display: flex;
+    align-items: center;
+
+    .trigger {
+      margin: 0;
+    }
+  }
+
+  &__sub {
+    &-header {
+      background-color: #364250;
+      height: $header-height;
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: $header-height;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
 

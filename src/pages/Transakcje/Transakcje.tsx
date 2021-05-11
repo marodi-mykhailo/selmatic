@@ -8,6 +8,7 @@ import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
 import {transitionTableReducerStateType} from "../../redux/transactionTable.reducer";
+import {appReducerType} from "../../redux/app.reducer";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -16,52 +17,56 @@ const steps: Array<MBreadcrumbItemType> = [{
 }]
 
 
-const columns = [
-    {
-        title: "Aukcja",
-        dataIndex: "aukcja",
-        key: "aukcja",
-    },
-    {
-        title: "Klient",
-        dataIndex: "klient",
-        key: "kient",
-    },
-    {
-        title: "Sztuk",
-        dataIndex: "sztuk",
-        key: "sztuk",
-    },
-    {
-        title: "Cena/sztuka",
-        dataIndex: "cenaSztuka",
-        key: "cenaSztuka",
-    },
-    {
-        title: "Data zakupu",
-        dataIndex: "dataZakupu",
-        key: "dataZakupu",
-    },
-    {
-        title: "Kod wysłany",
-        dataIndex: "kodWyslany",
-        key: "kodWyslany",
-    },
-    {
-        title: "Płatność",
-        dataIndex: "platnosc",
-        key: "platnosc",
-    },
-    {
-        title: "Szczegóły",
-        dataIndex: "szczegoly",
-        key: "szczegoly",
-    }
-]
 
 const Transactions = () => {
 
     const data = useSelector<AppRootStateType, transitionTableReducerStateType>(state => state.transitionTable)
+    const {isMobile} = useSelector<AppRootStateType, appReducerType>(state => state.app)
+
+    const columns = [
+        {
+            title: "Aukcja",
+            dataIndex: "aukcja",
+            key: "aukcja",
+            fixed: !isMobile && "left"
+        },
+        {
+            title: "Klient",
+            dataIndex: "klient",
+            key: "kient",
+        },
+        {
+            title: "Sztuk",
+            dataIndex: "sztuk",
+            key: "sztuk",
+        },
+        {
+            title: "Cena/sztuka",
+            dataIndex: "cenaSztuka",
+            key: "cenaSztuka",
+        },
+        {
+            title: "Data zakupu",
+            dataIndex: "dataZakupu",
+            key: "dataZakupu",
+        },
+        {
+            title: "Kod wysłany",
+            dataIndex: "kodWyslany",
+            key: "kodWyslany",
+        },
+        {
+            title: "Płatność",
+            dataIndex: "platnosc",
+            key: "platnosc",
+        },
+        {
+            title: "Szczegóły",
+            dataIndex: "szczegoly",
+            key: "szczegoly",
+        }
+    ]
+
 
     return (
         <div>

@@ -39,8 +39,7 @@ const ChartComponent = ({title, pointBackgroundColor, pointBorderColor, tooltipT
 
                 callbacks: {
                     label: function (context: any) {
-                        let label = `${context.formattedValue} ${tooltipText}`
-                        return label;
+                        return `${context.formattedValue} ${tooltipText}`;
                     },
                     title: function () {
                         return null
@@ -70,7 +69,7 @@ const ChartComponent = ({title, pointBackgroundColor, pointBorderColor, tooltipT
     };
 
     return (
-        <div className={"chart content-box"}>
+        <div className={"chart content__box"}>
             <div className={"chart__top"}>
                 <p className={"chart__top-title"}><i className="far fa-chart-bar"/>{title}</p>
             </div>
