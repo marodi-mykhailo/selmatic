@@ -201,7 +201,11 @@ const SideBar = () => {
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"17"}>
-                            Sprzedaż
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/settings/sales"}
+                            >
+                                Sprzedaż
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"18"}>

@@ -20,6 +20,7 @@ import Statistic from "./pages/Statistic/Statistic";
 import {appReducerType, setIsDesktop, setIsMobile, setIsTablet} from './redux/app.reducer';
 import {setIsCollapsed} from "./redux/sidebar.reducer";
 import Account from "./pages/Settings/Account/Account";
+import Sales from "./pages/Settings/Sales/Sales";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
@@ -87,6 +88,7 @@ function App() {
                         <Route path={'/customers'} render={() => <Customers/>}/>
                         <Route path={'/statistics'} render={() => <Statistic/>}/>
                         <Route path={'/settings/account'} render={() => <Account/>}/>
+                        <Route path={'/settings/sales'} render={() => <Sales/>}/>
                         <Route path={'/404'} render={() => <h1 className={"header-404"}>404 Page not found</h1>}/>
                         <Redirect from={'*'} to={'/404'}/>
                     </Switch>
