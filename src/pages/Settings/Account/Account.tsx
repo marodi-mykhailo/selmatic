@@ -6,6 +6,9 @@ import {v1} from "uuid";
 import ContentBox from "../../../components/ContentBox/ContentBox";
 import FloatLabel from "../../../components/FloatLabel/FloatLabel";
 import {Button, Input, Select} from "antd";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../../redux/store";
+import {appReducerType} from "../../../redux/app.reducer";
 
 
 const steps: Array<MBreadcrumbItemType> = [{
@@ -15,6 +18,9 @@ const steps: Array<MBreadcrumbItemType> = [{
 }]
 
 const Account = () => {
+
+    const {isDesktop} = useSelector<AppRootStateType, appReducerType>(state => state.app)
+
 
     const [accountType, setAccountType] = useState()
     const [firsLastName, setFirsLastName] = useState<string>()
@@ -42,7 +48,7 @@ const Account = () => {
             <div className={"settings-page__content"}>
                 <ContentBox title={"Dane personalne"}
                             icon={"fas fa-cog"}
-                            className={"settings-header settings-page__content__item settings-page__content__item--60"}>
+                            className={`settings-header settings-page__content__item ${isDesktop && "settings-page__content__item--60"}`}>
                     <div className={"settings-page__content__input"}>
                         <FloatLabel label={"Typ konta"}
                                     value={accountType}
@@ -151,7 +157,7 @@ const Account = () => {
 
                 <ContentBox title={"USTAWIENIA KONTA"}
                             icon={"fas fa-cog"}
-                            className={"settings-header settings-page__content__item settings-page__content__item--40"}>
+                            className={`settings-header settings-page__content__item ${isDesktop && "settings-page__content__item--40"}`}>
 
 
                     <div className={"settings-page__content__input"}>
