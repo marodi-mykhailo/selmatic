@@ -25,7 +25,6 @@ const acceptableTypes = ['image/png', "image/gif", "image/jpeg", "image/jpg",
 
 const uploadProps = {
     beforeUpload: (file: RcFile) => {
-        console.log(file.type)
         if (file.type && acceptableTypes.includes(file.type)) {
             message.info(`${file.name} it is a ${file.type}`);
             return true

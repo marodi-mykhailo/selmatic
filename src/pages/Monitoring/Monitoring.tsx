@@ -5,7 +5,6 @@ import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBr
 import {v1} from "uuid";
 import ContentBox from "../../components/ContentBox/ContentBox";
 import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
-import {Space} from "antd";
 import {AppRootStateType} from "../../redux/store";
 import {monitoringTableType} from "../../redux/monitoringTable.reducer";
 import {useSelector} from "react-redux";
@@ -35,9 +34,7 @@ const columns = [
         title: "Operacje",
         dataIndex: "operacje",
         key: "operacje",
-        render: (text: any, record: any) => {
-            console.log("text", text)
-            console.log("record", record)
+        render: () => {
             return (
                 <div className={"monitoringTable__options"}>
                     <span className={"monitoringTable__options-item text-blue"}>Szczegóły</span>

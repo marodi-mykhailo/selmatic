@@ -28,9 +28,7 @@ const columns = [
         title: "Operacje",
         dataIndex: "operacje",
         key: "operacje",
-        render: (text: any, record: any) => {
-            console.log("text", text)
-            console.log("record", record)
+        render: () => {
             return (
                 <Space size="small">
                     <Button
