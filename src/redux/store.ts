@@ -6,6 +6,7 @@ import codeDatabaseTableSlice from "./codeDatabaseTable.reducer";
 import monitoringTableSlice from './monitoringTable.reducer';
 import customersTableSlice from './customersTable.reducer';
 import appSlice from './app.reducer';
+import meSlice from './me.reducer';
 
 const rootReducer = combineReducers({
     sidebar: sidebarSlice,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     monitoringTable: monitoringTableSlice,
     customersTable: customersTableSlice,
     app: appSlice,
+    me: meSlice
 })
 
 export const store = configureStore({
