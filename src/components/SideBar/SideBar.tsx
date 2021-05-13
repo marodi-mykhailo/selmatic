@@ -3,11 +3,18 @@ import './SideBar.scss';
 import Sider from "antd/es/layout/Sider";
 import {Menu} from "antd";
 import {
-    BarsOutlined, CreditCardOutlined, DingtalkOutlined,
-    HomeOutlined, LinkOutlined,
-    MailOutlined, RocketOutlined, SettingOutlined,
-    ShoppingCartOutlined, StockOutlined,
-    SyncOutlined, UsergroupAddOutlined,
+    BarsOutlined,
+    CreditCardOutlined,
+    DingtalkOutlined,
+    HomeOutlined,
+    LinkOutlined,
+    MailOutlined,
+    RocketOutlined,
+    SettingOutlined,
+    ShoppingCartOutlined,
+    StockOutlined,
+    SyncOutlined,
+    UsergroupAddOutlined,
 } from "@ant-design/icons";
 import triggerImg from '../../assets/img/sidebar_trigger.jpeg'
 import {useDispatch, useSelector} from "react-redux";
@@ -209,7 +216,11 @@ const SideBar = () => {
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"18"}>
-                            Powiadomienia
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/settings/notifications"}
+                            >
+                                Powiadomienia
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"19"}>

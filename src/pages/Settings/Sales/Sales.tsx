@@ -6,7 +6,8 @@ import ContentBox from "../../../components/ContentBox/ContentBox";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
 import {appReducerType} from "../../../redux/app.reducer";
-import {Button, Checkbox} from "antd";
+import {Button} from "antd";
+import CustomCheckbox from "../../../components/CustomCheckbox/CustomCheckbox";
 
 
 const steps: Array<MBreadcrumbItemType> = [{
@@ -32,18 +33,12 @@ const Sales = () => {
                             icon={"fas fa-cog"}
                             className={`settings-header settings-page__content__item ${isDesktop && "settings-page__content__item--60"}`}>
 
-                    <div className={"checkbox-wrapper"}>
-                        <p className={"checkbox-wrapper__text"}>
-                            Brak wpłaty od kupującego w terminie 14 dni od daty zakupu spowoduje wysłanie do Allegro
-                            formularza zwrotu prowizji
-                        </p>
-                        <Checkbox
-                            value={commissionReturns}
-                            onChange={(e) => setCommissionReturns(e.target.checked)}
-                        >
-                            Aktywne
-                        </Checkbox>
-                    </div>
+                    <CustomCheckbox
+                        text={"Brak wpłaty od kupującego w terminie 14 dni od daty zakupu spowoduje wysłanie do Allegro formularza zwrotu prowizji"}
+                        label={"Aktywne"}
+                        checked={commissionReturns}
+                        onChange={(e) => setCommissionReturns(e.target.checked)}
+                    />
 
                     <Button style={{marginTop: "20px"}} className={"btn"}>
                         Zapisz zmiany
@@ -56,17 +51,12 @@ const Sales = () => {
                             icon={"fas fa-cog"}
                             className={`settings-header settings-page__content__item ${isDesktop && "settings-page__content__item--40"}`}>
 
-                    <div className={"checkbox-wrapper"}>
-                        <p className={"checkbox-wrapper__text"}>
-                            Po wyłączeniu automatu transakcje nie będą księgowane ani realizowane przez Selmatic
-                        </p>
-                        <Checkbox
-                            value={automateOff}
-                            onChange={(e) => setAutomateOff(e.target.checked)}
-                        >
-                            Włącz automat dla całego konta
-                        </Checkbox>
-                    </div>
+                    <CustomCheckbox
+                        text={"Po wyłączeniu automatu transakcje nie będą księgowane ani realizowane przez Selmatic"}
+                        label={"Włącz automat dla całego konta"}
+                        checked={automateOff}
+                        onChange={(e) => setAutomateOff(e.target.checked)}
+                    />
 
                     <Button style={{marginTop: "20px"}} className={"btn"}>
                         Zapisz zmiany
