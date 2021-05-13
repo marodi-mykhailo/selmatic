@@ -9,6 +9,7 @@ import {Button, Space} from "antd";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
 import {CodeDatabaseTableType} from "../../redux/codeDatabaseTable.reducer";
+import {appReducerType} from "../../redux/app.reducer";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -16,67 +17,70 @@ const steps: Array<MBreadcrumbItemType> = [{
     link: ""
 }]
 
-const columns = [
-    {
-        title: "ID",
-        dataIndex: "id",
-        key: "id",
-        fixed: "left"
-    }, {
-        title: "Nazwa bazy",
-        dataIndex: "nazwaBazy",
-        key: "nazwaBazy",
-        fixed: "left"
-    },
-    {
-        title: "Data dodania",
-        dataIndex: "dataDodania",
-        key: "dataDodania"
-    }, {
-        title: "Kodów",
-        dataIndex: "codesCount",
-        key: "codesCount"
-    }, {
-        title: "Sprzedanych",
-        dataIndex: "soldCount",
-        key: "soldCount"
-    }, {
-        title: "Pozostało",
-        dataIndex: "leftCount",
-        key: "leftCount"
-    }, {
-        title: "Typ bazy",
-        dataIndex: "typBazy",
-        key: "typBazy"
-    }, {
-        title: "Operacje",
-        dataIndex: "operacje",
-        key: "operacje",
-        render: (text: any, record: any) => {
-            console.log("text", text)
-            console.log("record", record)
-            return (
-                <Space size="small">
-                    <Button
-                        className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
-                        size={"large"}
-                        shape={"circle"}>
-                        <i className="fas fa-cog"/>
-                    </Button>
-                    <Button className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
-                            size={"large"}
-                            shape={"circle"}>
-                        <i className="fas fa-trash"/>
-                    </Button>
-                </Space>
-            )
-        }
-    }
-]
 
 const CodeDatabase = () => {
 
+    const {isMobile} = useSelector<AppRootStateType, appReducerType>(state => state.app)
+
+
     const data = useSelector<AppRootStateType, CodeDatabaseTableType>(state => state.codeDatabaseTable)
+
+
+    const columns = [
+        {
+            title: "ID",
+            dataIndex: "id",
+            key: "id",
+            fixed: !isMobile && "left"
+        }, {
+            title: "Nazwa bazy",
+            dataIndex: "nazwaBazy",
+            key: "nazwaBazy",
+            fixed: !isMobile && "left"
+        },
+        {
+            title: "Data dodania",
+            dataIndex: "dataDodania",
+            key: "dataDodania"
+        }, {
+            title: "Kodów",
+            dataIndex: "codesCount",
+            key: "codesCount"
+        }, {
+            title: "Sprzedanych",
+            dataIndex: "soldCount",
+            key: "soldCount"
+        }, {
+            title: "Pozostało",
+            dataIndex: "leftCount",
+            key: "leftCount"
+        }, {
+            title: "Typ bazy",
+            dataIndex: "typBazy",
+            key: "typBazy"
+        }, {
+            title: "Operacje",
+            dataIndex: "operacje",
+            key: "operacje",
+            render: () => {
+                return (
+                    <Space size="small">
+                        <Button
+                            className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
+                            size={"large"}
+                            shape={"circle"}>
+                            <i className="fas fa-cog"/>
+                        </Button>
+                        <Button className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
+                                size={"large"}
+                                shape={"circle"}>
+                            <i className="fas fa-trash"/>
+                        </Button>
+                    </Space>
+                )
+            }
+        }
+    ]
 
     return (
         <div>
