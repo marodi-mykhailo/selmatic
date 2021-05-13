@@ -193,7 +193,11 @@ const SideBar = () => {
                              title={"Ustawienia"}>
                         <Item className={"sidebar__nav-item"}
                               key={"16"}>
-                            Konto
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/settings/account"}
+                            >
+                                Konto
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"17"}>

@@ -19,6 +19,7 @@ import NewCodeDatabase from "./pages/CodeDatabase/NewCodeDatabase/NewCodeDatabas
 import Statistic from "./pages/Statistic/Statistic";
 import {appReducerType, setIsDesktop, setIsMobile, setIsTablet} from './redux/app.reducer';
 import {setIsCollapsed} from "./redux/sidebar.reducer";
+import Account from "./pages/Settings/Account/Account";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
@@ -27,19 +28,22 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        // authAPI.login("sebek.kasprzak.sk@gmail.com", "zaq1@WSX")
 
-        changeToTablet()
+        // dispatch(getMe())
 
-        window.addEventListener('resize', changeToTablet)
+        resizeInit()
+
+        window.addEventListener('resize', resizeInit)
 
         return () => {
-            window.removeEventListener('resize', changeToTablet)
+            window.removeEventListener('resize', resizeInit)
         }
 
     }, [isMobile, isTablet, isDesktop])
 
 
-    function changeToTablet() {
+    function resizeInit() {
 
         if (window.outerWidth < 482 && !isMobile) {
             dispatch(setIsMobile())
@@ -47,7 +51,6 @@ function App() {
         }
 
         if (window.outerWidth < 992 && window.outerWidth > 482 && !isTablet) {
-            console.log(isTablet)
             dispatch(setIsTablet())
             dispatch(setIsCollapsed(false))
         }
@@ -83,6 +86,7 @@ function App() {
                         <Route path={'/customers/:id'} render={() => <CustomersInfo/>}/>
                         <Route path={'/customers'} render={() => <Customers/>}/>
                         <Route path={'/statistics'} render={() => <Statistic/>}/>
+                        <Route path={'/settings/account'} render={() => <Account/>}/>
                         <Route path={'/404'} render={() => <h1 className={"header-404"}>404 Page not found</h1>}/>
                         <Redirect from={'*'} to={'/404'}/>
                     </Switch>

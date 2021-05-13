@@ -1,0 +1,23 @@
+.settings-page {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+
+      &--60 {
+        width: 58%;
+      }
+
+      &--40 {
+        width: 40.5%;
+      }
+    }
+
+    &__input {
+      margin: 0 0 35px 0;
+      padding-top: 20px;
+    }
+  }
+
+}
