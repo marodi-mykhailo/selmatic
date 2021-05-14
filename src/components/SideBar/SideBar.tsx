@@ -224,7 +224,11 @@ const SideBar = () => {
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"19"}>
-                            Aplikacja mobilna
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/settings/mobile"}
+                            >
+                                Aplikacja mobilna
+                            </NavLink>
                         </Item>
                     </SubMenu>
 

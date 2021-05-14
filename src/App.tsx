@@ -22,6 +22,9 @@ import {setIsCollapsed} from "./redux/sidebar.reducer";
 import Account from "./pages/Settings/Account/Account";
 import Sales from "./pages/Settings/Sales/Sales";
 import Notifications from "./pages/Settings/Notifications/Notifications";
+import {authAPI} from "./api/app.api";
+import {getMe} from "./redux/me.reducer";
+import MobileApp from "./pages/Settings/MobileApp/MobileApp";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
@@ -30,9 +33,9 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        // authAPI.login("sebek.kasprzak.sk@gmail.com", "zaq1@WSX")
+        authAPI.login("sebek.kasprzak.sk@gmail.com", "zaq1@WSX")
 
-        // dispatch(getMe())
+        dispatch(getMe())
 
         resizeInit()
 
@@ -91,6 +94,7 @@ function App() {
                         <Route path={'/settings/account'} render={() => <Account/>}/>
                         <Route path={'/settings/sales'} render={() => <Sales/>}/>
                         <Route path={'/settings/notifications'} render={() => <Notifications/>}/>
+                        <Route path={'/settings/mobile'} render={() => <MobileApp/>}/>
                         <Route path={'/404'} render={() => <h1 className={"header-404"}>404 Page not found</h1>}/>
                         <Redirect from={'*'} to={'/404'}/>
                     </Switch>

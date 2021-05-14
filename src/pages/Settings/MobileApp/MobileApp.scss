@@ -1,0 +1,21 @@
+.mobile-app-settings{
+  &__key{
+
+    &-text{
+      margin-top: 15px;
+    }
+
+    &__input-box{
+      display: flex;
+
+      input{
+        background-color: #EEEEEE;
+      }
+
+      input[readonly]{
+        cursor: not-allowed;
+      }
+    }
+  }
+
+}
