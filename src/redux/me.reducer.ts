@@ -6,7 +6,7 @@ type CompanyType = {
     taxId: string
 }
 
-type MeReducerType = {
+export type MeReducerType = {
     id: string
     login: string
     firstName: string

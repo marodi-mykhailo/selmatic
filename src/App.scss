@@ -209,3 +209,13 @@
     color: #8AC3F4;
   }
 }
+
+.space-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-sticky{
+  position: sticky;
+  top: 60px
+}

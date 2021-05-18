@@ -12,6 +12,7 @@ import {appReducerType} from "../../redux/app.reducer";
 import MobileSideBar from "../MobileSideBar/MobileSideBar";
 import triggerImg from "../../assets/img/sidebar_trigger.jpeg";
 import {setIsCollapsed} from "../../redux/sidebar.reducer";
+import {MeReducerType} from "../../redux/me.reducer";
 
 
 const MHeader = () => {
@@ -20,6 +21,8 @@ const MHeader = () => {
 
         const {isMobile, isTablet} = useSelector<AppRootStateType, appReducerType>(state => state.app)
         const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
+
+        const me = useSelector<AppRootStateType, MeReducerType>(state => state.me[0])
 
         const onCollapse = () => {
             dispatch(setIsCollapsed(!isCollapsed))
@@ -40,7 +43,7 @@ const MHeader = () => {
                         <Dropdown overlay={HeaderNameDropdown}
                                   placement="bottomRight" arrow>
                             <div className={"header__menu-name"}>
-                                <span className={"header__menu-name-text"}>Marodi Mykhailo </span>
+                                <span className={"header__menu-name-text"}>{me?.login}</span>
                                 <DownOutlined/>
                             </div>
                         </Dropdown>

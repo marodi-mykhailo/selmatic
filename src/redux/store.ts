@@ -1,22 +1,24 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import sidebarSlice from "./sidebar.reducer";
-import transactionTableSlice from "./transactionTable.reducer"
 import messageTemplatesTableSlice from "./messageTemplatesTable.reducer";
+import relatedAccountsTableSlice from './relatedAccountsTable.reducer';
 import codeDatabaseTableSlice from "./codeDatabaseTable.reducer";
+import transactionTableSlice from "./transactionTable.reducer"
 import monitoringTableSlice from './monitoringTable.reducer';
 import customersTableSlice from './customersTable.reducer';
+import sidebarSlice from "./sidebar.reducer";
 import appSlice from './app.reducer';
 import meSlice from './me.reducer';
 
 const rootReducer = combineReducers({
-    sidebar: sidebarSlice,
-    transitionTable: transactionTableSlice,
     messageTemplatesTable: messageTemplatesTableSlice,
+    relatedAccountsTable: relatedAccountsTableSlice,
     codeDatabaseTable: codeDatabaseTableSlice,
+    transitionTable: transactionTableSlice,
     monitoringTable: monitoringTableSlice,
     customersTable: customersTableSlice,
+    sidebar: sidebarSlice,
     app: appSlice,
-    me: meSlice
+    me: meSlice,
 })
 
 export const store = configureStore({

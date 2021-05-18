@@ -113,7 +113,11 @@ const SideBar = () => {
 
                         <Item className={"sidebar__nav-item"}
                               key={"5"}>
-                            Dodaj nowy szablon
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/templates/new"}
+                            >
+                                Dodaj nowy szablon
+                            </NavLink>
                         </Item>
                     </SubMenu>
                     <SubMenu className={"sidebar__nav-item"}
@@ -150,7 +154,11 @@ const SideBar = () => {
                     >
                         <Item className={"sidebar__nav-item"}
                               key={"9"}>
-                            Allegro
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/integrations/allegro"}
+                            >
+                                Allegro
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"10"}>

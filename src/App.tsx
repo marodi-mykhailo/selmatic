@@ -25,6 +25,8 @@ import Notifications from "./pages/Settings/Notifications/Notifications";
 import {authAPI} from "./api/app.api";
 import {getMe} from "./redux/me.reducer";
 import MobileApp from "./pages/Settings/MobileApp/MobileApp";
+import AllegroIntegrations from "./pages/Integrations/AllegroIntegrations/AllegroIntegrations";
+import NewMessageTemplates from "./pages/MessageTemplates/NewMessageTemplates/NewMessageTemplates";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
@@ -84,6 +86,7 @@ function App() {
                     <Switch>
                         <Route exact path={['/', '/dashboard']} render={() => <Dashboard/>}/>
                         <Route path={'/transactions'} render={() => <Transactions/>}/>
+                        <Route path={'/templates/new'} render={() => <NewMessageTemplates/>}/>
                         <Route path={'/templates'} render={() => <MessageTemplates/>}/>
                         <Route path={'/databases/new'} render={() => <NewCodeDatabase/>}/>
                         <Route path={'/databases'} render={() => <CodeDatabase/>}/>
@@ -95,6 +98,7 @@ function App() {
                         <Route path={'/settings/sales'} render={() => <Sales/>}/>
                         <Route path={'/settings/notifications'} render={() => <Notifications/>}/>
                         <Route path={'/settings/mobile'} render={() => <MobileApp/>}/>
+                        <Route path={'/integrations/allegro'} render={() => <AllegroIntegrations/>}/>
                         <Route path={'/404'} render={() => <h1 className={"header-404"}>404 Page not found</h1>}/>
                         <Redirect from={'*'} to={'/404'}/>
                     </Switch>

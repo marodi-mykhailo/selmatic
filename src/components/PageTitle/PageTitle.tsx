@@ -3,13 +3,13 @@ import './PageTitle.scss';
 
 type PageTitleType = {
     title: string
-    subtitle: string
+    subtitle?: string
 }
 
 const PageTitle = ({title, subtitle}: PageTitleType) => {
     return (
         <h1 className={"page-title"}>{title}
-            <small> {subtitle}</small>
+            {subtitle && <small> {subtitle}</small>}
         </h1>
     );
 };
