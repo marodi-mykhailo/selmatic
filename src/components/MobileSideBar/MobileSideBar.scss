@@ -1,10 +1,15 @@
+@import "src/assets/scss/variables";
+
+
 .mobile-sidebar {
   width: 80%;
   margin: 0 auto;
-  background-color: #28313B;
+  background-color: $sidebar-bgcolor;
   height: 750px;
   overflow-y: scroll;
   position: relative;
   transition: height .4s;
   padding-top: 20px;
+
+
 }

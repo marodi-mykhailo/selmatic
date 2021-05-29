@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './MobileSideBar.scss';
 import {Menu} from "antd";
 import {
@@ -7,10 +7,9 @@ import {
     MailOutlined,
     RocketOutlined, SettingOutlined,
     ShoppingCartOutlined, StockOutlined,
-    SyncOutlined, UsergroupAddOutlined
+    UsergroupAddOutlined
 } from "@ant-design/icons";
 import {NavLink} from "react-router-dom";
-import {getTime} from "../../assets/helpers/getTime";
 
 
 const {SubMenu, Item} = Menu
@@ -22,32 +21,9 @@ type MobileSideBarPropsType = {
 
 const MobileSideBar = ({isCollapsed}: MobileSideBarPropsType) => {
 
-
-    useEffect(() => {
-        getTime()
-    }, [])
-
-    const [time, setTime] = useState('')
-
-    setTimeout(() => setTime(getTime()), 1000)
-
     return (
         <div style={!isCollapsed ? {height: "0", paddingTop: "0"} : {height: "750px"}}
              className={"mobile-sidebar"}>
-            <div className={"sidebar__nav"}>
-                <h1 className={"sidebar__nav-title"}>Sesja</h1>
-                <Menu className={"sidebar__nav-menu"}
-                      theme="light"
-                      mode="inline"
-                      selectable={false}>
-                    <Item style={{backgroundColor: "inherit"}}
-                          className={"sidebar__nav-item"}
-                          key={"1"}
-                          icon={<SyncOutlined/>}>
-                        Sesja wygasa za {time}
-                    </Item>
-                </Menu>
-            </div>
             <div className={"sidebar__nav"}>
                 <h1 className={"sidebar__nav-title"}>Navigacja</h1>
                 <Menu className={"sidebar__nav-menu"}
@@ -96,7 +72,11 @@ const MobileSideBar = ({isCollapsed}: MobileSideBarPropsType) => {
 
                         <Item className={"sidebar__nav-item"}
                               key={"5"}>
-                            Dodaj nowy szablon
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/templates/new"}
+                            >
+                                Dodaj nowy szablon
+                            </NavLink>
                         </Item>
                     </SubMenu>
                     <SubMenu className={"sidebar__nav-item"}
@@ -133,7 +113,11 @@ const MobileSideBar = ({isCollapsed}: MobileSideBarPropsType) => {
                     >
                         <Item className={"sidebar__nav-item"}
                               key={"9"}>
-                            Allegro
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/integrations/allegro"}
+                            >
+                                Allegro
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"10"}>
@@ -147,11 +131,19 @@ const MobileSideBar = ({isCollapsed}: MobileSideBarPropsType) => {
                     >
                         <Item className={"sidebar__nav-item"}
                               key={"11"}>
-                            Doładuj konto
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/payments/top-up"}
+                            >
+                                Doładuj konto
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"12"}>
-                            Historia płatności
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/payments/history"}
+                            >
+                                Historia płatności
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"13"}>
@@ -183,25 +175,46 @@ const MobileSideBar = ({isCollapsed}: MobileSideBarPropsType) => {
                              title={"Ustawienia"}>
                         <Item className={"sidebar__nav-item"}
                               key={"16"}>
-                            Konto
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/settings/account"}
+                            >
+                                Konto
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"17"}>
-                            Sprzedaż
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/settings/sales"}
+                            >
+                                Sprzedaż
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"18"}>
-                            Powiadomienia
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/settings/notifications"}
+                            >
+                                Powiadomienia
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"19"}>
-                            Aplikacja mobilna
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/settings/mobile"}
+                            >
+                                Aplikacja mobilna
+                            </NavLink>
                         </Item>
                     </SubMenu>
+
+                    {/* Need to normal view */}
 
                     <Item className={"sidebar__nav-item"}
                           key={"20"}
                     />
+                    {/* Need to normal view */}
+
+
                 </Menu>
             </div>
         </div>
