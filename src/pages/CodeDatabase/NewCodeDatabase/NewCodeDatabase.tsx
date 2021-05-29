@@ -87,7 +87,6 @@ const NewCodeDatabase = () => {
                         <div className={"content-wrapper__content__item"}>
                             <FloatLabel label={"Rodzaj bazów kodów"}
                                         value={typeCodeBase}
-                                        type={"select"}
                             >
                                 <Select showSearch
                                         style={{width: "100%"}}
@@ -104,7 +103,6 @@ const NewCodeDatabase = () => {
                         <div className={"content-wrapper__content__item"}>
                             <FloatLabel label={"Typ importu plików"}
                                         value={typeFileImport}
-                                        type={"select"}
                             >
                                 <Select showSearch
                                         style={{width: "100%"}}
@@ -126,7 +124,6 @@ const NewCodeDatabase = () => {
 
                 <ContentBox title={"Wskazówka"}
                             className={"tip-box"}
-                            icon={"far fa-lightbulb"}
                 >
                     <p className={"tip-box__text"}>
                         Selmatic udostępnia dwa rodzaje baz kodów:
