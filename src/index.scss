@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;500;700&display=swap');
+@import "src/assets/scss/variables";
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: $basic-font-family;
   font-size: 14px;
+  overflow-x: hidden; //horizontal
 }
 
 @import "assets/scss/media";
