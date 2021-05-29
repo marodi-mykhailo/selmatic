@@ -9,7 +9,7 @@ import {Button, Space} from "antd";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
 import {CodeDatabaseTableType} from "../../redux/codeDatabaseTable.reducer";
-import {appReducerType} from "../../redux/app.reducer";
+import {AppReducerType} from "../../redux/app.reducer";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -20,7 +20,7 @@ const steps: Array<MBreadcrumbItemType> = [{
 
 const CodeDatabase = () => {
 
-    const {isMobile} = useSelector<AppRootStateType, appReducerType>(state => state.app)
+    const {isMobile} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
 
 
     const data = useSelector<AppRootStateType, CodeDatabaseTableType>(state => state.codeDatabaseTable)
