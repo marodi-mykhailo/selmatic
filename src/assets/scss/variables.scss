@@ -1,12 +1,136 @@
-$header-height: 46px;
-$header-bg-color: #2b3643;
+$basic-line-height: 1.2;
+$basic-font-family: 'Bai Jamjuree', sans-serif;
+$basic-text-color: rgb(31, 34, 50);
+$basic-border-radius: 5px;
+
+
+$header-height: 65px;
+$header-bg-color: #343353;
 $header-menu-item-hover-color: #3f4f62;
+$header-items-color: #ffffff;
+$header-bottom-shadow: 0 10px 20px 25px rgba(0, 0, 0, .4);
+
+$header-logo-color: #ffffff;
+$header-logo-font-size: 24px;
+$header-logo-font-weight: bold;
+
+///////////--PAGE-CONTENT--///////////
+$page-content-padding: 40px;
+
+//////////////--SIDEBAR--//////////////////
+$sidebar-bgcolor: #1f2131;
+$sidebar-items-color: #8f9098;
+$sidebar-items-active-color: #ffffff;
+$sidebar-items-bg-active-color: rgba(0, 0, 0, .5);
+$sidebar-items-box-shadow-active-color: inset 0px 17px 43px 0px rgba(17, 18, 27, 0.004);
+$sidebar-items-active-line-color: #f6651f;
+
+////////////////--PAGE-TITLE--//////////////
+$page-title-text-color: $basic-text-color;
+$page-title-text-size: 30px;
+$page-sub-title-text-size: 18px;
+$page-sub-title-text-color: $basic-text-color;
+
+//////////--INFO-BOX--////////////////////
+$info-box-bg-color: #75a2fe;
+$info-box-text-color: #ffffff;
+$info-box-text-size: 18px;
+
+//////////--BREADCRUMBS-BOX--//////////////
+$breadcrumbs-box-bg-color: rgb(255, 255, 255);
+$breadcrumbs-box-box-shadow: inset 0 0 21px 0 rgba(47, 46, 75, 0.13);
+
+$breadcrumbs-box-text-color: rgb(81, 81, 114);
+$breadcrumbs-box-font-size: 18px;
+$breadcrumbs-box-font-weight: normal;
+
+//////////--STATISTIC-CARD--//////////////
+$static-card-title-color: #cbcbd2;
+$static-card-title-font-size: 18px;
+$static-card-title-font-weight: 300;
+
+$static-card-value-color: #ffffff;
+$static-card-value-font-size: 36px;
+$static-card-value-font-weight: bold;
+
+$static-card-footer-text-color: rgba(255, 255, 255, 0.4);
+$static-card-footer-bg-color: rgba(0, 0, 0, .2);
+$static-card-footer-text-size: 11px;
+
+
+/////////--GRADIENTS--/////////////////
+
+$purple-blue-gradient: linear-gradient(90deg, rgba(168, 76, 242, 1) 30%, rgba(113, 102, 252, 1) 100%);
+$mate-black-gradient: linear-gradient(90deg, rgba(64, 63, 102, 1) 30%, rgba(52, 51, 85, 1) 100%);
+$rose-orange-gradient: linear-gradient(90deg, rgba(248, 107, 159, 1) 30%, rgba(254, 130, 113, 1) 100%);
+$lilac-blue-gradient: linear-gradient(90deg, rgba(86, 200, 192, 1) 30%, rgba(34, 156, 200, 1) 100%);
+$rose-black-gradient: linear-gradient(90deg, rgba(167, 61, 123, 1) 10%, rgba(67, 52, 90, 1) 100%);
+$gold-orange-gradient: linear-gradient(90deg, rgba(228, 163, 70, 1) 10%, rgba(179, 84, 86, 1) 100%);
+$orange-rose-gradient: linear-gradient(90deg, rgba(211, 109, 74, 1) 20%, rgba(210, 81, 175, 1) 100%);
+$violet-blue-gradient: linear-gradient(90deg, rgba(106, 39, 164, 1) 20%, rgba(88, 117, 224, 1) 100%);
+
+$charts-bg-gradient: linear-gradient(90deg, rgba(254, 130, 112, 1) 40%, rgba(255, 107, 153, 1) 100%);
+
+
 $icon-color: #79869a;
 $menu-item-color: #c6cfda;
 
-$sidebar-bgcolor:#364150;
 $sidebar-nav-title-color: #708096;
 
 
 $tablet-width: 992px;
+
+
+//////////--STATISTICS-TABLE--////////////////
+
+$statistics-table-header-font-size: 18px;
+$statistics-table-header-text-color: $basic-text-color;
+$statistics-table-title-text-size: 16px;
+$statistics-table-title-font-weight: bold;
+
+$statistics-table-content-font-size: 13px;
+
+$statistics-table-footer-font-size: 14px;
+$statistics-table-footer-font-weight: 300;
+
+$statistics-table-pagination-font-size: 13px;
+$statistics-table-pagination-font-weight: 300;
+$statistics-table-pagination-text-color: rgb(111, 160, 220);
+$statistics-table-pagination-border-color: $basic-text-color;
+$statistics-table-pagination-active-bg-color: #1b1c2b;
+
+///////////////--CONTENT-BOX--//////////////
+
+$content-box-title-font-size: 24px;
+$content-box-title-font-weight: bold;
+$content-box-title-color: $basic-text-color;
+
+
+//////////////--CUSTOM-CHECKBOX--///////////
+
+$custom-checkbox-font-size: 16px;
+$custom-checkbox-text-color: $basic-text-color;
+
+////////////--BASIC-BTN--/////////////////
+$basic-btn-bg-color: rgb(74, 113, 192);
+$basic-btn-border-radius: $basic-border-radius;
+
+$basic-btn-text-color: #fff;
+$basic-btn-font-size: 16px;
+$basic-btn-font-weight: bold;
+
+////////////--FLOAT-LABEL--////////
+
+
+///////////--DESCRIPTION--/////////
+$description-text-color: $basic-text-color;
+$description-font-size: 16px;
+
+$description-sub--font-size: 12px;
+$description-sub-font-weight: 300;
+
+
+
+
+
 
