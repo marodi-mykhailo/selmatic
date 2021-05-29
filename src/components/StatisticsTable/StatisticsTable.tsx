@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import './StatisticsTable.scss';
 import {Input, Table} from "antd";
-import {transitionTableReducerStateType} from "../../redux/transactionTable.reducer";
+import {TransitionTableReducerStateType} from "../../redux/transactionTable.reducer";
 
 
 type StatisticsTablePropsType = {
@@ -15,16 +15,29 @@ const pagination = {
     defaultCurrent: 10,
     showSizeChanger: true,
     pageSizeOptions: ['1', '10', '15', '20', '50'],
+    showTotal: (total: any, range: any) => `Pozycje od ${range[0]} do ${range[1]} z ${total} łącznie`,
+    itemRender: itemRender,
 }
+
+function itemRender(current: any, type: any, originalElement: any) {
+    if (type === 'prev') {
+        return <a>Poprzednia</a>;
+    }
+    if (type === 'next') {
+        return <a>Następna</a>;
+    }
+    return originalElement;
+}
+
 
 const StatisticsTable = ({data, searchAttr, columns}: StatisticsTablePropsType) => {
 
 
-    const [filteredData, setFilteredData] = useState<transitionTableReducerStateType>()
+    const [filteredData, setFilteredData] = useState<TransitionTableReducerStateType>()
 
     useEffect(() => {
         setFilteredData(data)
-    }, [])
+    }, [data])
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.currentTarget.value.length > 0) {
@@ -41,16 +54,26 @@ const StatisticsTable = ({data, searchAttr, columns}: StatisticsTablePropsType) 
 
     return (
         <div className={"statisticsTable"}>
-            <Input.Search className={"statisticsTable__search"}
-                          onChange={onChangeHandler}
-                          placeholder={"Search..."}
-                          allowClear/>
+            <div className={"statisticsTable__header"}>
+                <div className={"statisticsTable__header__select"}>
+                    <div>Pokaż</div>
+                    <div className={"statisticsTable__header--hide"}/>
+                    <div>Pozycji</div>
+                </div>
+                <div className={"statisticsTable__header__search"}>
+                    <div className={"statisticsTable__header__search__text"}>Szukaj</div>
+                    <Input className={"statisticsTable__header__search__input"}
+                           onChange={onChangeHandler}
+                           placeholder={"Search..."}/>
+                </div>
+            </div>
             <Table dataSource={filteredData}
                    columns={columns}
                    pagination={pagination}
                    className={"table-striped-rows"}
                    bordered
-                   scroll={{ x: 1000 }}
+                   size={"small"}
+                   scroll={{x: 1000}}
             />
         </div>
     );
