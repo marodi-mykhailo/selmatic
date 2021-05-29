@@ -1,13 +1,15 @@
+@import "src/assets/scss/variables";
+
+
 .statCard {
   width: 100%;
-  padding: 0 15px;
   position: relative;
 
   &__content {
     display: block;
-    margin-bottom: 25px;
     overflow: hidden;
-    background-color: #578ebe;
+    border-radius: 5px;
+
 
     &:after, &:before{
       content: " ";
@@ -41,24 +43,24 @@
     padding-right: 15px;
 
     &-number{
-      padding-top: 25px;
       text-align: right;
-      font-size: 34px;
-      line-height: 36px;
+      font-size: $static-card-value-font-size;
+      line-height: $static-card-value-font-size;
       letter-spacing: -1px;
       margin-bottom: 0;
-      font-weight: 300;
-      color: #FFF;
+      font-weight: $static-card-value-font-weight;
+      color: $static-card-value-color;
       opacity: 1;
     }
 
     &-desc{
+      padding-top: 25px;
       text-align: right;
-      font-size: 16px;
+      font-size: $static-card-title-font-size;
       letter-spacing: 0;
-      color: #FFF;
+      color: $static-card-title-color;
       opacity: 1;
-      font-weight: 300;
+      font-weight: $static-card-title-font-weight;
     }
   }
 
@@ -67,18 +69,19 @@
     display: block;
     padding: 6px 10px;
     position: relative;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-weight: 300;
-    font-size: 11px;
-    opacity: .7;
-    color: #FFF;
-    background-color: #4884b8;
+    font-size: $static-card-footer-text-size;
+    color: $static-card-footer-text-color;
+    background-color: $static-card-footer-bg-color;
+    border-radius: 5px;
 
     &:hover{
       text-decoration: none;
       opacity: .9;
       color: #FFF;
     }
+
 
     &>i{
       display: inline-block;
