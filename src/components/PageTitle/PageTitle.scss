@@ -1,17 +1,19 @@
+@import "src/assets/scss/variables";
+
 .page-title {
-  padding: 0px;
-  font-size: 28px;
+  padding: 0;
+  font-size: $page-title-text-size;
   letter-spacing: -1px;
   display: block;
-  color: #666;
-  margin: 0px 0px 15px 0px;
-  font-weight: 300;
+  color: $page-title-text-color;
+  margin: 0 0 15px 0;
+  font-weight: bold;
 
   small {
-    font-size: 14px;
-    letter-spacing: 0px;
+    font-size: $page-sub-title-text-size;
+    letter-spacing: 0;
     font-weight: 300;
-    color: #888;
+    color: $page-sub-title-text-color;
     padding-left: 5px;
   }
 }
