@@ -6,7 +6,7 @@ import {v1} from "uuid";
 import ContentBox from "../../../components/ContentBox/ContentBox";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
-import {appReducerType} from "../../../redux/app.reducer";
+import {AppReducerType} from "../../../redux/app.reducer";
 import {Button, Input} from "antd";
 
 
@@ -18,7 +18,7 @@ const steps: Array<MBreadcrumbItemType> = [{
 
 const MobileApp = () => {
 
-    const {isDesktop} = useSelector<AppRootStateType, appReducerType>(state => state.app)
+    const {isDesktop} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
 
     const textInput = useRef<Input>(null)
 
@@ -40,7 +40,6 @@ const MobileApp = () => {
 
             <div className={"settings-page__content"}>
                 <ContentBox title={"Dane personalne"}
-                            icon={"fas fa-cog"}
                             className={`settings-header settings-page__content__item ${isDesktop && "settings-page__content__item--40"}`}>
 
                     <div className={'mobile-app-settings__key'}>
@@ -70,7 +69,6 @@ const MobileApp = () => {
                 </ContentBox>
 
                 <ContentBox title={"AKTYWNE URZĄDZENIA"}
-                            icon={""}
                             className={`info-header settings-page__content__item 
                             ${isDesktop && "settings-page__content__item--60"}`}>
                 </ContentBox>
