@@ -1,4 +1,5 @@
 import axios from "axios";
+import {CustomerType} from "../redux/customers.reducer";
 
 const settings = {
     withCredentials: true,
@@ -10,9 +11,12 @@ const instance = axios.create({
     ...settings
 })
 
-export const codesAPI = {
-    getAll() {
-        return instance.get('get_all_code')
+type GetCustomersResponseType = CustomerType[]
+
+
+export const appAPI = {
+    getOrders() {
+        return instance.get('get_orders?&from=2021-05-25&to=2021-05-26&limit=1000')
     },
     getSellable() {
         return instance.get('get_sellable_code')
@@ -20,6 +24,9 @@ export const codesAPI = {
     getSold() {
         return instance.get('get_sold_codes')
     },
+    getCustomers() {
+        return instance.get<GetCustomersResponseType>('get_customers?dev=set')
+    }
 }
 
 
