@@ -1,6 +1,8 @@
-$primary-color: #27A69A; // Change color here. C'mon, try it!
-$text-color: mix(#000, $primary-color, 64%);
+@import "src/assets/scss/variables";
 
+
+$primary-color: rgb(117, 162, 254);
+$text-color: mix(#000, $primary-color, 64%);
 
 .custom-checkbox {
   display: flex;
@@ -16,37 +18,75 @@ $text-color: mix(#000, $primary-color, 64%);
     margin-bottom: 0.375em;
   }
 
-  &__input{
+  &__input {
     position: absolute;
     left: -9999px;
+
     &:checked + span {
-      background-color: mix(#fff, $primary-color, 84%);
+      background-color: inherit;
+
+      &:after {
+        content: " ";
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: $primary-color;
+        position: absolute;
+        top: 50%;
+        left: 18px;
+        transform: translate(-50%, -50%);
+      }
+
       &:before {
-        box-shadow: inset 0 0 0 0.4375em $primary-color;
+        //box-shadow: inset 0 0 0 0.4375em $primary-color;
+        //border: 1px solid rgba($basic-text-color, .4);
       }
     }
+
   }
 
-  &__text{
+  &__text {
+    position: relative;
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    padding: 0.375em 0.75em 0.375em 0.375em;
+    border-radius: 99em; // or something higher...
+    transition: 0.25s ease;
+
+    &:hover {
+      background-color: mix(#fff, $primary-color, 84%);
+    }
+
+    &:before {
       display: flex;
-      align-items: center;
-      padding: 0.375em 0.75em 0.375em 0.375em;
-      border-radius: 99em; // or something higher...
+      flex-shrink: 0;
+      content: "";
+      background-color: #FFFFFF;
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+      margin-right: .75em;
       transition: 0.25s ease;
-      &:hover {
-        background-color: mix(#fff, $primary-color, 84%);
-      }
-      &:before {
-        display: flex;
-        flex-shrink: 0;
-        content: "";
-        background-color: #fff;
-        width: 1.5em;
-        height: 1.5em;
-        border-radius: 50%;
-        margin-right: 0.375em;
-        transition: 0.25s ease;
-        box-shadow: inset 0 0 0 0.125em $primary-color;
+      box-shadow: inset 0 0 0 0.125em rgba($basic-text-color, .4);
+    }
+  }
+}
+
+
+.templates__info__box {
+  text-align: center;
+
+  &__content {
+    width: 415px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 300;
+
+    & ul {
+      list-style: none;
+      text-align: start;
+      margin-top: 20px;
     }
   }
 }
