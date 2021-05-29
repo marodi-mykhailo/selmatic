@@ -1,0 +1,43 @@
+.notification {
+
+  &__hide {
+
+    &__box {
+      display: flex;
+      margin-left: 32px;
+      align-items: center;
+      margin-top: 5px;
+
+
+
+      p {
+        font-size: 13px;
+        margin: 0;
+      }
+
+      input {
+        border: 1px solid rgba(50, 49, 79, .3);
+        border-radius: 5px;
+        width: 77px;
+        height: 25px;
+        margin-left: 10px;
+        text-align: center;
+
+        /* Chrome, Safari, Edge, Opera */
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        /* Firefox */
+        &[type=number] {
+          -moz-appearance: textfield;
+        }
+      }
+    }
+  }
+}
+
+
+
