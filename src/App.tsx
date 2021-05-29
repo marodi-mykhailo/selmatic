@@ -13,31 +13,35 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 import CodeDatabase from "./pages/CodeDatabase/CodeDatabase";
 import Monitoring from "./pages/Monitoring/Monitoring";
 import TextEditor from "./components/TextEditor/TextEditor";
-import Customers from "./pages/Customers/Customers";
-import CustomersInfo from "./pages/CustomersInfo/CustomersInfo";
+import Customers from "./pages/CustomersContainer/Customers/Customers";
+import CustomersInfo from "./pages/CustomersContainer/CustomersInfo/CustomersInfo";
 import NewCodeDatabase from "./pages/CodeDatabase/NewCodeDatabase/NewCodeDatabase";
 import Statistic from "./pages/Statistic/Statistic";
-import {appReducerType, setIsDesktop, setIsMobile, setIsTablet} from './redux/app.reducer';
+import {AppReducerType, setIsDesktop, setIsMobile, setIsTablet} from './redux/app.reducer';
 import {setIsCollapsed} from "./redux/sidebar.reducer";
 import Account from "./pages/Settings/Account/Account";
 import Sales from "./pages/Settings/Sales/Sales";
 import Notifications from "./pages/Settings/Notifications/Notifications";
-import {authAPI} from "./api/app.api";
-import {getMe} from "./redux/me.reducer";
 import MobileApp from "./pages/Settings/MobileApp/MobileApp";
 import AllegroIntegrations from "./pages/Integrations/AllegroIntegrations/AllegroIntegrations";
 import NewMessageTemplates from "./pages/MessageTemplates/NewMessageTemplates/NewMessageTemplates";
+import PaymentsHistory from "./pages/Payments/PaymentsHistory/PaymentsHistory";
+import AuctionDetails from "./pages/AuctionDetails/AuctionDetails";
+import TransactionDetails from './pages/Transakcje/TransakcjeDetails/TransactionDetails';
+import TopUpPage from "./pages/Payments/TopUpPage/TopUpPage";
+import Auth from "./pages/Auth/Auth";
+import {getCustomers} from "./redux/customers.reducer";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
-    const {isMobile, isTablet, isDesktop} = useSelector<AppRootStateType, appReducerType>(state => state.app)
+    const {isMobile, isTablet, isDesktop} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        authAPI.login("sebek.kasprzak.sk@gmail.com", "zaq1@WSX")
+        // authAPI.login("sebek.kasprzak.sk@gmail.com", "zaq1@WSX")
 
-        dispatch(getMe())
+        // dispatch(getMe())
 
         resizeInit()
 
@@ -76,35 +80,45 @@ function App() {
 
     return (
         <Layout>
-            <MHeader/>
-            {isCollapsed && (isTablet || isMobile) && <div className={"hide-header-height"}/>}
-            <Layout>
-                {!(isTablet || isMobile) && < SideBar/>}
-                <Content style={{marginLeft: getLeftMargin()}}
-                         className={"content"}
-                >
-                    <Switch>
-                        <Route exact path={['/', '/dashboard']} render={() => <Dashboard/>}/>
-                        <Route path={'/transactions'} render={() => <Transactions/>}/>
-                        <Route path={'/templates/new'} render={() => <NewMessageTemplates/>}/>
-                        <Route path={'/templates'} render={() => <MessageTemplates/>}/>
-                        <Route path={'/databases/new'} render={() => <NewCodeDatabase/>}/>
-                        <Route path={'/databases'} render={() => <CodeDatabase/>}/>
-                        <Route path={'/monitoring'} render={() => <Monitoring/>}/>
-                        <Route path={'/customers/:id'} render={() => <CustomersInfo/>}/>
-                        <Route path={'/customers'} render={() => <Customers/>}/>
-                        <Route path={'/statistics'} render={() => <Statistic/>}/>
-                        <Route path={'/settings/account'} render={() => <Account/>}/>
-                        <Route path={'/settings/sales'} render={() => <Sales/>}/>
-                        <Route path={'/settings/notifications'} render={() => <Notifications/>}/>
-                        <Route path={'/settings/mobile'} render={() => <MobileApp/>}/>
-                        <Route path={'/integrations/allegro'} render={() => <AllegroIntegrations/>}/>
-                        <Route path={'/404'} render={() => <h1 className={"header-404"}>404 Page not found</h1>}/>
-                        <Redirect from={'*'} to={'/404'}/>
-                    </Switch>
-                    <TextEditor/>
-                </Content>
-            </Layout>
+            {/*<Switch>*/}
+            {/*    <Route exact path={'/login'} render={() => <Auth isRegister={false}/>}/>*/}
+            <div>
+                <MHeader/>
+                {isCollapsed && (isTablet || isMobile) && <div className={"hide-header-height"}/>}
+                <Layout>
+                    {!(isTablet || isMobile) && < SideBar/>}
+                    <Content style={{marginLeft: getLeftMargin()}}
+                             className={"content"}
+                    >
+                        <Switch>
+                            <Route exact path={['/', '/dashboard']} render={() => <Dashboard/>}/>
+                            <Route path={'/auction/:id'} render={() => <AuctionDetails/>}/>
+                            <Route path={'/transactions/:id'} render={() => <TransactionDetails/>}/>
+                            <Route path={'/transactions'} render={() => <Transactions/>}/>
+                            <Route path={'/templates/new'} render={() => <NewMessageTemplates/>}/>
+                            <Route path={'/templates'} render={() => <MessageTemplates/>}/>
+                            <Route path={'/databases/new'} render={() => <NewCodeDatabase/>}/>
+                            <Route path={'/databases'} render={() => <CodeDatabase/>}/>
+                            <Route path={'/monitoring'} render={() => <Monitoring/>}/>
+                            <Route path={'/customers/:id'} render={() => <CustomersInfo/>}/>
+                            <Route path={'/customers'} render={() => <Customers/>}/>
+                            <Route path={'/statistics'} render={() => <Statistic/>}/>
+                            <Route path={'/settings/account'} render={() => <Account/>}/>
+                            <Route path={'/settings/sales'} render={() => <Sales/>}/>
+                            <Route path={'/settings/notifications'} render={() => <Notifications/>}/>
+                            <Route path={'/settings/mobile'} render={() => <MobileApp/>}/>
+                            <Route path={'/integrations/allegro'} render={() => <AllegroIntegrations/>}/>
+                            <Route path={'/payments/history'} render={() => <PaymentsHistory/>}/>
+                            <Route path={'/payments/top-up'} render={() => <TopUpPage/>}/>
+                            <Route path={'/404'}
+                                   render={() => <h1 className={"header-404"}>404 Page not found</h1>}/>
+                            <Redirect from={'*'} to={'/404'}/>
+                        </Switch>
+                        <TextEditor/>
+                    </Content>
+                </Layout>
+            </div>
+            {/*</Switch>*/}
         </Layout>
     );
 }
