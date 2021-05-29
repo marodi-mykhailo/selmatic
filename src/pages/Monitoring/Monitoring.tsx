@@ -6,8 +6,9 @@ import {v1} from "uuid";
 import ContentBox from "../../components/ContentBox/ContentBox";
 import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
 import {AppRootStateType} from "../../redux/store";
-import {monitoringTableType} from "../../redux/monitoringTable.reducer";
 import {useSelector} from "react-redux";
+import {NavLink} from 'react-router-dom';
+import {TransitionTableReducerStateType} from "../../redux/transactionTable.reducer";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -22,22 +23,25 @@ const columns = [
         key: "id"
     }, {
         title: "Nazwa aukcji",
-        dataIndex: "nazwaAukcji",
-        key: "nazwaAukcji",
+        dataIndex: "auction",
+        key: "auction",
     },
     {
         title: "Koniec aukcji",
-        dataIndex: "koniecAukcji",
-        key: "koniecAukcji"
+        dataIndex: "codeShipmentDate",
+        key: "codeShipmentDate"
     },
     {
         title: "Operacje",
         dataIndex: "operacje",
         key: "operacje",
-        render: () => {
+        render: (text: any, record: any) => {
+            console.log(record)
             return (
                 <div className={"monitoringTable__options"}>
-                    <span className={"monitoringTable__options-item text-blue"}>Szczegóły</span>
+                    <span className={"monitoringTable__options-item text-blue"}>
+                     <NavLink to={`/auction/${record.id}`}>Szczegóły</NavLink>
+                    </span>
                     <span>/</span>
                     <span className={"monitoringTable__options-item text-red"}>Wyłacz monitoring</span>
                 </div>
@@ -46,8 +50,10 @@ const columns = [
     }
 ]
 
+
 const Monitoring = () => {
-    const data = useSelector<AppRootStateType, monitoringTableType>(state => state.monitoringTable)
+    const data = useSelector<AppRootStateType, TransitionTableReducerStateType>(state => state.transitionTable)
+
     return (
         <div>
             <PageTitle title={"Monitoring"} subtitle={"lista aukcji Alegro"}/>
