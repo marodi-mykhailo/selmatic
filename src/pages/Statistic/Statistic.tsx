@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Statistic.scss';
 import PageTitle from "../../components/PageTitle/PageTitle";
 import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBreadcrumb";
 import {v1} from "uuid";
 import StatCard from "../../components/StatCard/StatCard";
+import {Select} from "antd";
+import ChartComponent from "../../components/ChartComponent/ChartComponent";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -12,74 +14,108 @@ const steps: Array<MBreadcrumbItemType> = [{
 },]
 
 const Statistic = () => {
+
+    const [month, setMonth] = useState<string>()
+
+    const onSelectHandler = (value: string) => {
+        setMonth(value)
+    }
+
     return (
-        <div>
+        <div className={"statistic"}>
             <PageTitle title={"Statystyki"} subtitle={"zaawansowane statystyki sprzedaży"}/>
             <MBreadcrumb steps={steps}/>
             <div className={"statistic__card__wrapper"}>
                 <StatCard
-                    backgroundColor={"#588FBE"}
-                    title={"NAN"}
-                    subTitle={"Średni czas wysyłki kodu"}
-                    icon={"fas fa-paper-plane"}
+                    backgroundColor={"mate-black-gradient"}
+                    title={"35"}
+                    subTitle={"Ilość zamówień dziś"}
                     link={"#"}
-                    bottomBgc={"#4A86B9"}
                 />
                 <StatCard
-                    backgroundColor={"#E45B5A"}
-                    title={"50"}
-                    subTitle={"Pozostała ilość kredytów"}
-                    icon={"fas fa-dollar-sign"}
+                    backgroundColor={"purple-blue-gradient"}
+                    title={"121"}
+                    subTitle={"Ilość aktywnych aukcji"}
                     link={"#"}
-                    bottomBgc={"#E04C4B"}
                 />
                 <StatCard
-                    backgroundColor={"#44B6AD"}
-                    title={"50"}
-                    subTitle={"Pozostała ilość kredytów"}
-                    icon={"fas fa-euro-sign"}
+                    backgroundColor={"rose-orange-gradient"}
+                    title={"6 210,394 PLN"}
+                    subTitle={"Stan kont allegro"}
                     link={"#"}
-                    bottomBgc={"#40A9A0"}
                 />
                 <StatCard
-                    backgroundColor={"#8776A7"}
-                    title={"50"}
+                    backgroundColor={"lilac-blue-gradient"}
+                    title={"6 210,394 PLN"}
                     subTitle={"Pozostała ilość kredytów"}
-                    icon={"fas fa-bolt"}
                     link={"#"}
-                    bottomBgc={"#7D6B9F"}
                 />
                 <StatCard
-                    backgroundColor={"#44B6AD"}
-                    title={"50"}
+                    backgroundColor={"rose-black-gradient"}
+                    title={"35"}
                     subTitle={"Pozostała ilość kredytów"}
-                    icon={"fas fa-barcode"}
                     link={"#"}
-                    bottomBgc={"#40A9A0"}
                 />
                 <StatCard
-                    backgroundColor={"#8776A7"}
-                    title={"50"}
+                    backgroundColor={"gold-orange-gradient"}
+                    title={"121"}
                     subTitle={"Pozostała ilość kredytów"}
-                    icon={"fa fa-shopping-cart"}
                     link={"#"}
-                    bottomBgc={"#7D6B9F"}
                 />
                 <StatCard
-                    backgroundColor={"#588FBE"}
-                    title={"50"}
+                    backgroundColor={"orange-rose-gradient"}
+                    title={"6 210,394 PLN"}
                     subTitle={"Pozostała ilość kredytów"}
-                    icon={"fas fa-users"}
                     link={"#"}
-                    bottomBgc={"#4A86B9"}
                 />
                 <StatCard
-                    backgroundColor={"#E45B5A"}
-                    title={"50"}
+                    backgroundColor={"violet-blue-gradient"}
+                    title={"6 210,394 PLN"}
                     subTitle={"Pozostała ilość kredytów"}
-                    icon={"fas fa-dollar-sign"}
                     link={"#"}
-                    bottomBgc={"#E04C4B"}
+                />
+            </div>
+            <div className={"statistic-select"}>
+                <h3 className={"statistic-select__title"}>
+                    Zakres statystyk
+                </h3>
+                <p className={"statistic-select__sub-title"}>
+                    Możesz wybrać okres generowanych poniżej statystyk.
+                    Aktualnie wybrany miesiąc: <strong>Maj</strong>
+                </p>
+                <Select defaultValue={"maj"}
+                        className={"statistic-select__select"}
+                        onChange={onSelectHandler}
+                >
+
+                    <Select.Option value={"maj"}>
+                        <b>Maj 2021</b>
+                        &nbsp;
+                        <span style={{fontWeight: 300}}>(Aktyalny)</span>
+                    </Select.Option>
+
+                    <Select.Option value={"kwi"}>
+                        <b>Kwi 2021</b>
+                    </Select.Option>
+
+                    <Select.Option value={"mart"}>
+                        <b>Mart 2021</b>
+                    </Select.Option>
+
+                </Select>
+
+            </div>
+
+            <div className={"dashboard__charts"}>
+                <ChartComponent title={"Ilość transakcji w kwietniu"}
+                                pointBackgroundColor={"#F89F9F"}
+                                pointBorderColor={"rgba(248,159,159, .2)"}
+                                tooltipText={"transakcji"}
+                />
+                <ChartComponent title={"Wartość sprzedaży w kwietniu (PLN)"}
+                                pointBackgroundColor={"#9ACBE6"}
+                                pointBorderColor={"#9ACBE6"}
+                                tooltipText={"PLN"}
                 />
             </div>
         </div>

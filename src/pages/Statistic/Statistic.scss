@@ -1,12 +1,52 @@
-.statistic{
-  &__card{
-    &__wrapper{
+.statistic {
+  &__card {
+    &__wrapper {
       display: flex;
       flex-wrap: wrap;
+      gap: 20px;
 
-      .statCard{
-        width: 25%;
+      .statCard {
+        flex: 1 0 21%;
       }
+    }
+  }
+
+  &-select {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: rgb(49, 48, 79);
+    border-radius: 5px;
+    color: #FFFFFF;
+    padding: 25px;
+
+    &__title {
+      color: #FFFFFF;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    &__sub-title {
+      font-size: 16px;
+      margin-top: 0;
+      font-weight: 300;
+    }
+
+    &__select {
+      width: 300px;
+
+      div {
+        background-color: inherit !important;
+        border: 1px solid rgba(255, 255, 255, .3) !important;
+        border-radius: 5px !important;
+        color: #FFFFFF;
+        width: 260px;
+      }
+
+      .ant-select-arrow {
+        color: #FFFFFF;
+      }
+
     }
   }
 }
