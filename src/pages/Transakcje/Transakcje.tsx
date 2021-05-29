@@ -7,8 +7,10 @@ import ContentBox from "../../components/ContentBox/ContentBox";
 import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import {transitionTableReducerStateType} from "../../redux/transactionTable.reducer";
-import {appReducerType} from "../../redux/app.reducer";
+import {TransitionTableReducerStateType} from "../../redux/transactionTable.reducer";
+import {AppReducerType} from "../../redux/app.reducer";
+import {NavLink} from 'react-router-dom';
+
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -17,54 +19,56 @@ const steps: Array<MBreadcrumbItemType> = [{
 }]
 
 
-
 const Transactions = () => {
 
-    const data = useSelector<AppRootStateType, transitionTableReducerStateType>(state => state.transitionTable)
-    const {isMobile} = useSelector<AppRootStateType, appReducerType>(state => state.app)
+    const data = useSelector<AppRootStateType, TransitionTableReducerStateType>(state => state.transitionTable)
+    const {isMobile} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
 
     const columns = [
         {
             title: "Aukcja",
-            dataIndex: "aukcja",
-            key: "aukcja",
-            fixed: !isMobile && "left"
+            dataIndex: "auction",
+            key: "auction",
+            fixed: !isMobile && "left",
+            render: (text: any, record: any) => {
+                return <NavLink key={v1()} to={`/transactions/${record.id}`}>{text}</NavLink>
+            }
         },
         {
             title: "Klient",
-            dataIndex: "klient",
-            key: "kient",
+            dataIndex: "client",
+            key: "cient",
         },
         {
             title: "Sztuk",
-            dataIndex: "sztuk",
-            key: "sztuk",
+            dataIndex: "count",
+            key: "count",
         },
         {
             title: "Cena/sztuka",
-            dataIndex: "cenaSztuka",
-            key: "cenaSztuka",
+            dataIndex: "pricePerItem",
+            key: "pricePerItem",
         },
         {
             title: "Data zakupu",
-            dataIndex: "dataZakupu",
-            key: "dataZakupu",
+            dataIndex: "dateOfPurchase",
+            key: "dateOfPurchase",
         },
         {
             title: "Kod wysłany",
-            dataIndex: "kodWyslany",
-            key: "kodWyslany",
+            dataIndex: "sentCodes",
+            key: "sentCodes",
+            render: (text: any, record: any) => {
+                return text.map((item: string, index: number) => <div key={v1()}>
+                    {`${index + 1}. ${item}`}
+                </div>)
+            }
         },
         {
             title: "Płatność",
-            dataIndex: "platnosc",
-            key: "platnosc",
+            dataIndex: "paymentStatus",
+            key: "paymentStatus",
         },
-        {
-            title: "Szczegóły",
-            dataIndex: "szczegoly",
-            key: "szczegoly",
-        }
     ]
 
 
@@ -72,7 +76,7 @@ const Transactions = () => {
         <div>
             <PageTitle title={"Transakcje"} subtitle={"lista transakcji Allegro"}/>
             <MBreadcrumb steps={steps}/>
-            <ContentBox title={"LISTA TRANSAKCJI ALLEGRO"} className={"light"}>
+            <ContentBox className={"light"}>
                 <StatisticsTable data={data} searchAttr={"aukcja"} columns={columns}/>
             </ContentBox>
         </div>
