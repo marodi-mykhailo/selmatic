@@ -1,0 +1,27 @@
+@import "src/assets/scss/variables";
+
+.operation-email-input {
+  border-radius: $basic-border-radius;
+  font-size: 18px;
+  padding: 10px 0;
+}
+
+.sentCodes-column {
+
+  .ant-descriptions-item-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+.no-after{
+
+  .ant-descriptions-item-label{
+    padding-right: 5px;
+
+    &:after{
+      content: none;
+    }
+  }
+}
