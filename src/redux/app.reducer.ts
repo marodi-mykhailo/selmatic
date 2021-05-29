@@ -1,12 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-export type appReducerType = {
+export type AppReducerType = {
     isDesktop: boolean
     isTablet: boolean
     isMobile: boolean
 }
 
-const initialState: appReducerType = {
+const initialState: AppReducerType = {
     isDesktop: true,
     isTablet: false,
     isMobile: false
