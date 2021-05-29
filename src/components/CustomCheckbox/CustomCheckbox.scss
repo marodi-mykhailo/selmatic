@@ -1,6 +1,58 @@
+@import "src/assets/scss/variables";
+
 .checkbox-wrapper{
+  align-items: center;
+  width: 60%;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgb(117, 162, 254);
+
   &__text{
-    font-size: 13px;
-    color: #888888;
+    font-size: $custom-checkbox-font-size;
+    color: $custom-checkbox-text-color;
+    margin-bottom: 5px;
+
+  }
+
+  &__checkbox{
+    margin-right: 8px;
+
+    & .ant-checkbox-inner{
+      border-color: rgb(117, 162, 254);
+      background-color: #FFFFFF;
+      border-radius: 5px;
+      height: 24px;
+      width: 24px;
+      position: relative;
+    }
+
+
+  }
+}
+
+.ant-checkbox:hover::after{
+  visibility: hidden;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner::after{
+  content: " ";
+  background-color: rgb(117, 162, 254);
+  border-radius: 100%;
+  border: none;
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ant-checkbox-checked::after{
+  border: none;
+}
+
+.ant-checkbox-wrapper.ant-checkbox-wrapper-checked.checkbox-wrapper__checkbox{
+
+  &:hover{
+    border: none;
   }
 }
