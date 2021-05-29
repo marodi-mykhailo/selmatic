@@ -1,20 +1,22 @@
+@import "src/assets/scss/variables";
+
 .float-label {
   position: relative;
 }
 
 .label {
   font-size: 16px;
-  color: #999;
+  color: $basic-text-color;
   position: absolute;
   pointer-events: none;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   transition: 0.2s ease all;
 }
 
 .label-float {
   top: -20px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 /// fonts colors ///
