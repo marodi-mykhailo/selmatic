@@ -51,7 +51,6 @@ const Account = () => {
                     <div className={"settings-page__content__input"}>
                         <FloatLabel label={"Typ konta"}
                                     value={accountType}
-                                    type={"select"}
                         >
                             <Select showSearch
                                     style={{width: "100%"}}
@@ -133,7 +132,6 @@ const Account = () => {
                     <div className={"settings-page__content__input"}>
                         <FloatLabel label={"Państwo"}
                                     value={country}
-                                    type={"select"}
                         >
                             <Select showSearch
                                     style={{width: "100%"}}
@@ -180,7 +178,6 @@ const Account = () => {
                         <FloatLabel
                             label={"Maksymalny czas nieaktywności, po którym sesja wygasa"}
                             value={nonActiveTime}
-                            type={"select"}
                         >
                             <Select showSearch
                                     style={{width: "100%"}}

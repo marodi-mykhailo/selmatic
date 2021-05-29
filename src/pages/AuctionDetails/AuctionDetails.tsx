@@ -97,7 +97,6 @@ const AuctionDetails = () => {
                 <div className={"settings-page__content__input"}>
                     <FloatLabel label={"Szablon"}
                                 value={template}
-                                type={"select"}
                     >
                         <Select showSearch
                                 style={{width: "85%"}}
@@ -125,7 +124,6 @@ const AuctionDetails = () => {
                 <div className={"settings-page__content__input"}>
                     <FloatLabel label={"Baza kodów"}
                                 value={codeBase}
-                                type={"select"}
                     >
                         <Select showSearch
                                 style={{width: "85%"}}
