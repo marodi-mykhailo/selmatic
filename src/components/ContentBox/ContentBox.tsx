@@ -1,25 +1,24 @@
-import React, {FunctionComponent} from 'react';
+import React, {CSSProperties, FunctionComponent} from 'react';
 import './ContentBox.scss';
 
 type ContentBoxPropsType = {
-    title: string
+    title?: string
     className?: string
     contentClassName?: string
-    icon?: string
+    style?: CSSProperties
 }
 
 const ContentBox: FunctionComponent<ContentBoxPropsType> = ({
                                                                 title,
                                                                 className,
                                                                 contentClassName,
+                                                                style,
                                                                 children,
-                                                                icon = "fas fa-link"
                                                             }) => {
     return (
-        <div className={`content__box ${className}`}>
-            <h1 className={"content__box-title"}>
-                <i className={`${icon}`}/>
-                {title}</h1>
+        <div style={style} className={`content__box ${className}`}>
+            {title && <h1 className={"content__box-title"}>
+                {title}</h1>}
             <div className={`content__box-content ${contentClassName}`}>
                 {children}
             </div>
