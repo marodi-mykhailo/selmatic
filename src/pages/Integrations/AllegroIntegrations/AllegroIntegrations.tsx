@@ -9,7 +9,6 @@ import StatisticsTable from "../../../components/StatisticsTable/StatisticsTable
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
 import {RelatedAccountsTableType} from "../../../redux/relatedAccountsTable.reducer";
-import {stat} from "fs";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -17,58 +16,59 @@ const steps: Array<MBreadcrumbItemType> = [{
     link: ""
 }]
 
-const AllegroIntegrations = () => {
-
-    const columns = [
-        {
-            title: "ID",
-            dataIndex: "id",
-            key: "id",
-        }, {
-            title: "Login",
-            dataIndex: "login",
-            key: "login",
-        },
-        {
-            title: "Data dodania",
-            dataIndex: "addedData",
-            key: "addedData"
-        }, {
-            title: "Status",
-            dataIndex: "status",
-            key: "status",
-            render: (status: any, record: any) => (
-                <Tag key={record.key} color={"#00BCD4"}>
-                    {status.toUpperCase()}
-                </Tag>
-            )
-        }, {
-            title: "Ostatnio sprawdzane",
-            dataIndex: "lastCheckDate",
-            key: "lastCheckDate"
-        }, {
-            title: "Operacje",
-            dataIndex: "operacje",
-            key: "operacje",
-            render: () => {
-                return (
-                    <Space size="small">
-                        <Button
-                            className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
+const columns = [
+    {
+        title: "ID",
+        dataIndex: "id",
+        key: "id",
+    }, {
+        title: "Login",
+        dataIndex: "login",
+        key: "login",
+    },
+    {
+        title: "Data dodania",
+        dataIndex: "addedData",
+        key: "addedData"
+    }, {
+        title: "Status",
+        dataIndex: "status",
+        key: "status",
+        render: (status: any, record: any) => (
+            <Tag key={record.key} color={"rgb(57, 195, 67)"}>
+                {status.toUpperCase()}
+            </Tag>
+        )
+    }, {
+        title: "Ostatnio sprawdzane",
+        dataIndex: "lastCheckDate",
+        key: "lastCheckDate"
+    }, {
+        title: "Operacje",
+        dataIndex: "operacje",
+        key: "operacje",
+        render: () => {
+            return (
+                <Space size="small">
+                    <Button
+                        className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
+                        size={"large"}
+                        shape={"circle"}>
+                        <i className="fas fa-cog"/>
+                    </Button>
+                    <Button className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
                             size={"large"}
                             shape={"circle"}>
-                            <i className="fas fa-cog"/>
-                        </Button>
-                        <Button className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
-                                size={"large"}
-                                shape={"circle"}>
-                            <i className="fas fa-trash"/>
-                        </Button>
-                    </Space>
-                )
-            }
+                        <i className="fas fa-trash"/>
+                    </Button>
+                </Space>
+            )
         }
-    ]
+    }
+]
+
+
+const AllegroIntegrations = () => {
 
     const data = useSelector<AppRootStateType, RelatedAccountsTableType>(state => state.relatedAccountsTable)
 
@@ -79,7 +79,6 @@ const AllegroIntegrations = () => {
             <MBreadcrumb steps={steps}/>
 
             <ContentBox title={"POWIĄŻ NOWE KONTO ALLEGRO"}
-                        icon={"fas fa-cog"}
                         className={"mb20"}
             >
                 <p>
