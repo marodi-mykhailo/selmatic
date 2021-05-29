@@ -7,9 +7,10 @@
   position: fixed;
   left: 0;
   font-weight: 300;
-  top: 46px;
+  top: $header-height;
 
   &__nav {
+    padding: 0 5px;
     &-menu {
       background-color: $sidebar-bgcolor;
       border-right: 1px solid $sidebar-bgcolor;
@@ -32,20 +33,21 @@
     }
 
     &-item {
-      color: #b4bcc8;
+      color: $sidebar-items-color;
 
       & a {
-        color: #b4bcc8;
+        color: $sidebar-items-color;
 
         &:hover {
-          background-color: #394756;
-          color: #b4bcc8;
+          color: $sidebar-items-active-color;
         }
       }
 
       &:hover {
-        background-color: #394756;
-        color: #b4bcc8;
+        background-color: $sidebar-items-bg-active-color ;
+        color: $sidebar-items-active-color;
+        box-shadow: $sidebar-items-box-shadow-active-color;
+        border-radius: 0 5px 5px 0;
       }
     }
   }
@@ -73,9 +75,10 @@
   width: 100% !important;
 
   &-selected {
-    background-color: #3e4b5c !important;
-    color: #f1f1f1;
-    border-left: 4px solid #1caf9a;
+    background-color: $sidebar-items-bg-active-color !important;
+    color: $sidebar-items-active-color;
+    border-left: 4px solid $sidebar-items-active-line-color;
+    border-radius: 0 5px 5px 0;
 
     &::after {
       content: none !important;
@@ -101,5 +104,5 @@
 }
 
 .ant-menu-submenu > .ant-menu {
-  background-color: #394756;
+  background-color: $sidebar-bgcolor;
 }

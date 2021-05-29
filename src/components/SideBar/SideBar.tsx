@@ -50,23 +50,23 @@ const SideBar = () => {
             <div className={"self_clear"}>
                 <div style={{backgroundImage: `url(${triggerImg})`}} className={"trigger"} onClick={onCollapse}/>
             </div>
+            {/*<div className={"sidebar__nav"}>*/}
+            {/*    {!isCollapsed ? <h1 className={"sidebar__nav-title"}>Sesja</h1> : <hr className={"sidebar__nav-hr"}/>}*/}
+            {/*    <Menu className={"sidebar__nav-menu"}*/}
+            {/*          theme="light"*/}
+            {/*          mode="inline"*/}
+            {/*          selectable={false}>*/}
+            {/*        <Item style={{backgroundColor: "inherit"}}*/}
+            {/*              className={"sidebar__nav-item"}*/}
+            {/*              key={"1"}*/}
+            {/*              icon={<SyncOutlined/>}>*/}
+            {/*            Sesja wygasa za {time}*/}
+            {/*        </Item>*/}
+            {/*    </Menu>*/}
+            {/*</div>*/}
             <div className={"sidebar__nav"}>
-                {!isCollapsed ? <h1 className={"sidebar__nav-title"}>Sesja</h1> : <hr className={"sidebar__nav-hr"}/>}
-                <Menu className={"sidebar__nav-menu"}
-                      theme="light"
-                      mode="inline"
-                      selectable={false}>
-                    <Item style={{backgroundColor: "inherit"}}
-                          className={"sidebar__nav-item"}
-                          key={"1"}
-                          icon={<SyncOutlined/>}>
-                        Sesja wygasa za {time}
-                    </Item>
-                </Menu>
-            </div>
-            <div className={"sidebar__nav"}>
-                {!isCollapsed ? <h1 className={"sidebar__nav-title"}>Navigacja</h1> :
-                    <hr className={"sidebar__nav-hr"}/>}
+                {/*{!isCollapsed ? <h1 className={"sidebar__nav-title"}>Navigacja</h1> :*/}
+                {/*    <hr className={"sidebar__nav-hr"}/>}*/}
                 <Menu className={"sidebar__nav-menu"}
                       theme="light"
                       mode="inline"
@@ -172,11 +172,19 @@ const SideBar = () => {
                     >
                         <Item className={"sidebar__nav-item"}
                               key={"11"}>
-                            Doładuj konto
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/payments/top-up"}
+                            >
+                                Doładuj konto
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"12"}>
-                            Historia płatności
+                            <NavLink activeClassName={"nav-link--active"}
+                                     to={"/payments/history"}
+                            >
+                                Historia płatności
+                            </NavLink>
                         </Item>
                         <Item className={"sidebar__nav-item"}
                               key={"13"}>
@@ -240,9 +248,21 @@ const SideBar = () => {
                         </Item>
                     </SubMenu>
 
+                    {/* Need to normal view */}
+
                     <Item className={"sidebar__nav-item"}
                           key={"20"}
                     />
+                    <Item className={"sidebar__nav-item"}
+                          key={"21"}
+                    />
+                    <Item className={"sidebar__nav-item"}
+                          key={"22"}
+                    />
+
+                    {/* Need to normal view */}
+
+
                 </Menu>
             </div>
 
