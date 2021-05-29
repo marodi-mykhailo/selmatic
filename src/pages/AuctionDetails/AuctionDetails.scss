@@ -1,0 +1,47 @@
+@import "src/assets/scss/variables";
+
+.description {
+  color: $description-text-color;
+
+  & tbody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    & tr {
+      display: flex;
+      flex-direction: column;
+
+      & td{
+
+        & .ant-descriptions-item-container{
+          border-bottom: 1px solid rgba(102, 102, 136, .4);
+          padding-bottom: 5px;
+        }
+      }
+
+      & .ant-descriptions-item-label {
+        width: 40%;
+        font-size: $description-font-size;
+
+      }
+
+      & .ant-descriptions-item-content {
+        font-size: $description-font-size;
+        font-weight: $description-sub-font-weight;
+
+      }
+    }
+  }
+
+  &__sub {
+    font-size: $description-sub--font-size;
+    font-weight: $description-sub-font-weight;
+  }
+}
+
+.border-none{
+  .ant-descriptions-item-container{
+    border: none !important;
+  }
+}
