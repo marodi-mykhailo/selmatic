@@ -5,7 +5,6 @@ import {CheckboxChangeEvent} from "antd/lib/checkbox/Checkbox";
 
 type CustomCheckboxPropsType = {
     text: string
-    label: string
     checked?: boolean
     onChange?: (e: CheckboxChangeEvent) => void
     className?: string
@@ -13,7 +12,6 @@ type CustomCheckboxPropsType = {
 
 const CustomCheckbox: FunctionComponent<CustomCheckboxPropsType> = ({
                                                                         text,
-                                                                        label,
                                                                         checked,
                                                                         onChange,
                                                                         className,
@@ -23,15 +21,16 @@ const CustomCheckbox: FunctionComponent<CustomCheckboxPropsType> = ({
 
     return (
         <div className={`checkbox-wrapper ${className}`}>
-            <p className={"checkbox-wrapper__text"}>
-                {text}
-            </p>
-            <Checkbox
-                checked={checked}
-                onChange={onChange}
-            >
-                {label}
-            </Checkbox>
+            <div style={{display: "flex"}}>
+                <Checkbox
+                    checked={checked}
+                    onChange={onChange}
+                    className={"checkbox-wrapper__checkbox"}
+                />
+                <p className={"checkbox-wrapper__text"}>
+                    {text}
+                </p>
+            </div>
             {children}
         </div>
     );
