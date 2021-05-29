@@ -5,7 +5,7 @@ import {v1} from "uuid";
 import ContentBox from "../../../components/ContentBox/ContentBox";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
-import {appReducerType} from "../../../redux/app.reducer";
+import {AppReducerType} from "../../../redux/app.reducer";
 import {Button} from "antd";
 import CustomCheckbox from "../../../components/CustomCheckbox/CustomCheckbox";
 
@@ -18,7 +18,7 @@ const steps: Array<MBreadcrumbItemType> = [{
 
 const Sales = () => {
 
-    const {isDesktop} = useSelector<AppRootStateType, appReducerType>(state => state.app)
+    const {isDesktop} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
 
     const [commissionReturns, setCommissionReturns] = useState<boolean>()
     const [automateOff, setAutomateOff] = useState<boolean>()
@@ -30,12 +30,10 @@ const Sales = () => {
             <MBreadcrumb steps={steps}/>
             <div className={"settings-page__content"}>
                 <ContentBox title={"ZWROTY PROWIZJI"}
-                            icon={"fas fa-cog"}
                             className={`settings-header settings-page__content__item ${isDesktop && "settings-page__content__item--60"}`}>
 
                     <CustomCheckbox
                         text={"Brak wpłaty od kupującego w terminie 14 dni od daty zakupu spowoduje wysłanie do Allegro formularza zwrotu prowizji"}
-                        label={"Aktywne"}
                         checked={commissionReturns}
                         onChange={(e) => setCommissionReturns(e.target.checked)}
                     />
@@ -48,12 +46,10 @@ const Sales = () => {
 
 
                 <ContentBox title={"WYŁĄCZENIE AUTOMATU"}
-                            icon={"fas fa-cog"}
                             className={`settings-header settings-page__content__item ${isDesktop && "settings-page__content__item--40"}`}>
 
                     <CustomCheckbox
                         text={"Po wyłączeniu automatu transakcje nie będą księgowane ani realizowane przez Selmatic"}
-                        label={"Włącz automat dla całego konta"}
                         checked={automateOff}
                         onChange={(e) => setAutomateOff(e.target.checked)}
                     />
