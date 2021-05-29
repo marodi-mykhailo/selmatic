@@ -1,112 +1,167 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-type transitionTableItemType = {
+export type TransitionTableItemType = {
     key: string
-    aukcja: string
-    klient: string
-    sztuk: string
-    cenaSztuka: string
-    dataZakupu: string
-    kodWyslany: string
-    platnosc: string
-    szczegoly: string
+    id: string
+    auction: string
+    codeShippingStatus: string,
+    platform: string
+    client: string
+    count: string
+    pricePerItem: string
+    dateOfPurchase: string
+    paymentStatus: string
+    payUTransactionCompletionDate: string
+    codeShipmentDate: string
+    sentCodes: string[]
+
 }
 
-export type transitionTableReducerStateType = Array<transitionTableItemType>
+export type TransitionTableReducerStateType = Array<TransitionTableItemType>
 
-const initialState: transitionTableReducerStateType = [
+const initialState: TransitionTableReducerStateType = [
     {
         key: '1',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
+        id: '1',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
     },
     {
         key: '2',
-        aukcja: 'mecha',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
+        id: '2',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
     }, {
         key: '3',
-        aukcja: 'dascw',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
+        id: '3',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
     }, {
         key: '4',
-        aukcja: 'lfgr',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
+        id: '4',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
     }, {
         key: '5',
-        aukcja: 'idicv',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
+        id: '5',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
     }, {
         key: '6',
-        aukcja: 'eeeer',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
+        id: '6',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
     }, {
         key: '7',
-        aukcja: 'eewer',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
+        id: '7',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
     }, {
         key: '8',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
+        id: '8',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
     }, {
         key: '9',
-        aukcja: 'aukcja',
-        klient: "klient",
-        sztuk: 'sztuk',
-        cenaSztuka: 'cenaSztuka',
-        dataZakupu: 'dataZakupu',
-        kodWyslany: 'kodWyslany',
-        platnosc: 'platnosc',
-        szczegoly: 'szczegoly',
-    },
+        id: '9',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
+    }, {
+        key: '10',
+        id: '10',
+        auction: 'League Of Legends LOL Smurf Konto EUW 20 Kapsuł',
+        codeShippingStatus: "Wysłany",
+        platform: 'Allegro',
+        client: 'Paweł Kowalski',
+        count: '1',
+        pricePerItem: '9,99 zł',
+        dateOfPurchase: '01/05/2021  04:50:27',
+        paymentStatus: 'Zakończona',
+        payUTransactionCompletionDate: '01/05/2021  04:50:27',
+        codeShipmentDate: '01/05/2021  04:50:27',
+        sentCodes: ["GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG", "GJIE-JSDN-FNWO-WFWG"]
+    }
 ]
 
 const transactionTableSlice = createSlice({
