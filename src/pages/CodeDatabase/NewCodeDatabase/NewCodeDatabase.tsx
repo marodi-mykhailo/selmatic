@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import './NewCodeDatabase.scss';
 import MBreadcrumb, {MBreadcrumbItemType} from "../../../components/MBreadcrumb/MBreadcrumb";
 import {v1} from "uuid";
@@ -10,6 +10,10 @@ import TextArea from "antd/es/input/TextArea";
 import {PlusOutlined} from '@ant-design/icons';
 import {RcFile, UploadChangeParam} from "antd/lib/upload/interface";
 
+type TypeFileImport = "nonSelect" | "insertCodes" | "fromTxt" | "addFiles"
+
+type TypeCodeBase = "nonSelect" | "default" | "recursion"
+
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
     name: "Bazy kodów",
@@ -19,6 +23,12 @@ const steps: Array<MBreadcrumbItemType> = [{
     name: "Nowa baza kodów",
     link: ""
 }]
+
+export type newCodeDatabase = {
+    db_name: string
+    db_type: string
+    codes: string[]
+}
 
 const acceptableTypes = ['image/png', "image/gif", "image/jpeg", "image/jpg",
     "application/pdf", "application/zip", "application/x-rar-compressed"]
@@ -47,11 +57,88 @@ const dummyRequest = (props: any) => {
 
 const NewCodeDatabase = () => {
 
-    const [codeBaseName, setCodeBaseName] = useState<string>()
-    const [typeCodeBase, setTypeCodeBase] = useState()
-    const [typeFileImport, setTypeFileImport] = useState()
+    const [codeBaseName, setCodeBaseName] = useState<string>("")
+    const [codeBaseNameError, setCodeBaseNameError] = useState<string>("")
+
+    const [typeCodeBase, setTypeCodeBase] = useState<TypeCodeBase>()
+    const [typeCodeBaseError, setTypeCodeBaseError] = useState<string>()
+
+    const [typeFileImport, setTypeFileImport] = useState<TypeFileImport>()
+
+
     const [textAreaCodes, setTextAreaCodes] = useState<string>()
+    const [codesFromTxt, setCodesFromTxt] = useState<any>()
+
     const [codeFiles, setCodeFiles] = useState<FileList | null>()
+
+    const getCodesArrayFromFile = () => {
+        const file = codeFiles![0]
+
+        const reader = new FileReader();
+
+        reader.readAsText(file);
+
+        reader.onload = function () {
+            let res: any = []
+            let a = reader.result?.toString().split("\n")
+            a?.forEach(item => {
+                if (item.trim().length > 0)
+                    res.push(item.trim())
+            })
+            console.log(res)
+
+            setCodesFromTxt(res)
+
+            // console.log(a?.map(item => item.trim()).filter(item => ite))
+            // setCodesFromTxt(c)
+        }
+        reader.onerror = function () {
+            console.log(reader.error)
+        }
+
+    }
+
+    const onCodeBaseNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setCodeBaseName(e.currentTarget.value)
+        setCodeBaseNameError("")
+    }
+
+    const onTypeCodeBaseHandler = (value: TypeCodeBase) => {
+        setTypeCodeBase(value)
+        setTypeCodeBaseError("")
+    }
+
+    const checkInputs = () => {
+        if (!codeBaseName) {
+            setCodeBaseNameError("This field is required")
+        }
+        if (!typeCodeBase || typeCodeBase === "nonSelect") {
+            setTypeCodeBaseError("This field is required")
+        }
+    }
+
+
+    const createNewCodeDatabaseHandler = () => {
+
+        checkInputs()
+
+        switch (typeFileImport) {
+            case "nonSelect":
+                return ''
+            case "insertCodes":
+                console.log({
+                    db_name: codeBaseName,
+                    db_type: typeCodeBase,
+                    codes: textAreaCodes?.replace(/\n+/g, '\n')?.split('\n').map(item => item.trim())
+                })
+                return ""
+            case "fromTxt":
+                getCodesArrayFromFile()
+                console.log(codesFromTxt)
+                return ""
+
+        }
+    }
 
     const getTitle = (type: string | undefined) => {
         switch (type) {
@@ -81,8 +168,13 @@ const NewCodeDatabase = () => {
                                 <Input
                                     className={"custom-input"}
                                     value={codeBaseName}
-                                    onChange={e => setCodeBaseName(e.currentTarget.value)}/>
+                                    onChange={onCodeBaseNameHandler}/>
                             </FloatLabel>
+                            {codeBaseNameError &&
+                            <span className={"content-wrapper__content__item--error"}>
+                                {codeBaseNameError}
+                            </span>
+                            }
                         </div>
                         <div className={"content-wrapper__content__item"}>
                             <FloatLabel label={"Rodzaj bazów kodów"}
@@ -90,7 +182,7 @@ const NewCodeDatabase = () => {
                             >
                                 <Select showSearch
                                         style={{width: "100%"}}
-                                        onChange={value => setTypeCodeBase(value)}
+                                        onChange={value => onTypeCodeBaseHandler(value)}
                                         value={typeCodeBase}
                                         className={"custom-select"}
                                 >
@@ -99,6 +191,11 @@ const NewCodeDatabase = () => {
                                     <Select.Option value={'recursion'}>Baza rekurencyjna</Select.Option>
                                 </Select>
                             </FloatLabel>
+                            {typeCodeBaseError &&
+                            <span className={"content-wrapper__content__item--error"}>
+                                {typeCodeBaseError}
+                            </span>
+                            }
                         </div>
                         <div className={"content-wrapper__content__item"}>
                             <FloatLabel label={"Typ importu plików"}
@@ -196,9 +293,13 @@ const NewCodeDatabase = () => {
                     </div>
 
 
-                    <Button className={"btn"}>
+                    <Button className={"btn"}
+                            onClick={createNewCodeDatabaseHandler}
+                    >
                         Dodaj bazę
                     </Button>
+
+                    {JSON.stringify(codesFromTxt, null, 2)}
                 </ContentBox>
             </div>
             }
@@ -206,7 +307,6 @@ const NewCodeDatabase = () => {
 
         </div>
     );
-}
-;
+};
 
 export default NewCodeDatabase;

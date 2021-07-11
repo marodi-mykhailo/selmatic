@@ -3,9 +3,32 @@
   color: #FFFFFF;
   padding: 15px;
   border: 1px solid #68caf1;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 14px;
   border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .1) , 0 1px 2px rgba(0, 0, 0, .18);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .1), 0 1px 2px rgba(0, 0, 0, .18);
   //box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 18%);
+  width: max-content;
+
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 90%;
+
+  transition: all .7s;
+
+  &__icon {
+    margin-right: 10px;
+  }
+
+  &__error {
+    background-color: #FB7577;
+    border-color: #FB7577;
+  }
+
+  &__success {
+    background-color: #52C41A;
+    border-color: #52C41A;
+  }
 }

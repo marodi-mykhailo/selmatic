@@ -3,7 +3,7 @@ import './StatCard.scss';
 
 type StatCardPropsType = {
     backgroundColor: string
-    title: string
+    title: string | number
     subTitle: string
     link: string
 }

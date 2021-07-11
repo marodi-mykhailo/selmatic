@@ -1,38 +1,45 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-export type MessageTemplatesTableItemType = {
+export type MessageTemplatesItemType = {
     key: string
-    id: string
+    id: number
     nazwaSzablonu: string
 }
 
-export type MessageTemplatesTableStateType = Array<MessageTemplatesTableItemType>
+export type MessageTemplatesStateType = Array<MessageTemplatesItemType>
 
-const initialState: MessageTemplatesTableStateType = [
+const initialState: MessageTemplatesStateType = [
     {
         key: "1",
-        id: "1",
+        id: 1,
         nazwaSzablonu: "konta euw"
     }, {
         key: "2",
-        id: "2",
+        id: 2,
         nazwaSzablonu: "konta eune"
     },
     {
         key: "3",
-        id: "3",
+        id: 3,
         nazwaSzablonu: "konta PBE"
     }, {
         key: "4",
-        id: "4",
+        id: 4,
         nazwaSzablonu: "konta TR BE"
     }
 ]
 
-const messageTemplatesTableSlice = createSlice({
+const messageTemplatesSlice = createSlice({
     name: "MessageTemplatesTable",
     initialState,
-    reducers: {}
+    reducers: {
+        deleteItemFromMessageTemplate(state, {type, payload}: PayloadAction<number>) {
+            console.log("type", type)
+            return state.filter(item => item.id !== payload)
+        }
+    }
 })
 
-export default messageTemplatesTableSlice.reducer;
+export default messageTemplatesSlice.reducer;
+
+export const {deleteItemFromMessageTemplate} = messageTemplatesSlice.actions;

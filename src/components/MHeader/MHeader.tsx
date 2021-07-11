@@ -7,18 +7,18 @@ import HeaderBellDropdown from "./Dropdown/HeaderBellDropdown/HeaderBellDropdown
 import HeaderNameDropdown from "./Dropdown/HeaderNameDropdown/HeaderNameDropdown";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import {AppReducerType} from "../../redux/app.reducer";
+import {AppReducerType, AppResponseType} from "../../redux/app.reducer";
 import MobileSideBar from "../MobileSideBar/MobileSideBar";
 import triggerImg from "../../assets/img/sidebar_trigger.jpeg";
 import {setIsCollapsed} from "../../redux/sidebar.reducer";
-import {MeReducerType} from "../../redux/me.reducer";
+import {MeReducerType} from "../../redux/users.reducer";
 
 
 const MHeader = () => {
 
         const dispatch = useDispatch()
 
-        const {isMobile, isTablet} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
+        const {isMobile, isTablet} = useSelector<AppRootStateType, AppResponseType>(state => state.app.response)
         const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
 
         const me = useSelector<AppRootStateType, MeReducerType>(state => state.me[0])

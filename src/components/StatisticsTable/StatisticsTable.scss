@@ -57,22 +57,24 @@
       font-size: 16px;
       color: #FFFFFF;
       text-align: center;
+      cursor: pointer;
 
       &:hover {
-
+        transform: scale(1.1);
+        transition: transform .5s;
       }
 
 
       &--settings {
-        background-color: #8AC3F4;
+
       }
 
       &--flag {
-        background-color: #00BCD4;
+
       }
 
       &--delete {
-        background-color: #F3565D;
+
       }
     }
   }

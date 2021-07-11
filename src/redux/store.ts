@@ -2,23 +2,27 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import messageTemplatesTableSlice from "./messageTemplatesTable.reducer";
 import relatedAccountsTableSlice from './relatedAccountsTable.reducer';
 import paymentsHistoryTableSlice from './paymentsHistoryTable.reducer';
-import codeDatabaseTableSlice from "./codeDatabaseTable.reducer";
 import transactionTableSlice from "./transactionTable.reducer"
-import monitoringTableSlice from './monitoringTable.reducer';
+import codeDatabaseSlice from "./codeDatabase.reduce";
+import statisticsSlice from './statisctics.reducer';
 import customersSlice from './customers.reducer';
 import sidebarSlice from "./sidebar.reducer";
+import ordersSlice from './orders.reducer';
+import offersSlice from './offers.reducer';
 import appSlice from './app.reducer';
-import meSlice from './me.reducer';
+import meSlice from './users.reducer';
 
 const rootReducer = combineReducers({
     messageTemplatesTable: messageTemplatesTableSlice,
     relatedAccountsTable: relatedAccountsTableSlice,
     paymentsHistoryTable: paymentsHistoryTableSlice,
-    codeDatabaseTable: codeDatabaseTableSlice,
     transitionTable: transactionTableSlice,
-    monitoringTable: monitoringTableSlice,
+    codeDatabase: codeDatabaseSlice,
+    statistics: statisticsSlice,
     customers: customersSlice,
     sidebar: sidebarSlice,
+    orders: ordersSlice,
+    offers: offersSlice,
     app: appSlice,
     me: meSlice,
 })

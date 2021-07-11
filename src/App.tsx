@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import {Content} from "antd/es/layout/layout";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store";
-import Transactions from "./pages/Transakcje/Transakcje";
+import Transactions from "./pages/Orders/Orders";
 import MessageTemplates from "./pages/MessageTemplates/MessageTemplates";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import CodeDatabase from "./pages/CodeDatabase/CodeDatabase";
@@ -17,7 +17,7 @@ import Customers from "./pages/CustomersContainer/Customers/Customers";
 import CustomersInfo from "./pages/CustomersContainer/CustomersInfo/CustomersInfo";
 import NewCodeDatabase from "./pages/CodeDatabase/NewCodeDatabase/NewCodeDatabase";
 import Statistic from "./pages/Statistic/Statistic";
-import {AppReducerType, setIsDesktop, setIsMobile, setIsTablet} from './redux/app.reducer';
+import {AppResponseType, setIsDesktop, setIsMobile, setIsTablet} from './redux/app.reducer';
 import {setIsCollapsed} from "./redux/sidebar.reducer";
 import Account from "./pages/Settings/Account/Account";
 import Sales from "./pages/Settings/Sales/Sales";
@@ -26,22 +26,20 @@ import MobileApp from "./pages/Settings/MobileApp/MobileApp";
 import AllegroIntegrations from "./pages/Integrations/AllegroIntegrations/AllegroIntegrations";
 import NewMessageTemplates from "./pages/MessageTemplates/NewMessageTemplates/NewMessageTemplates";
 import PaymentsHistory from "./pages/Payments/PaymentsHistory/PaymentsHistory";
-import AuctionDetails from "./pages/AuctionDetails/AuctionDetails";
-import TransactionDetails from './pages/Transakcje/TransakcjeDetails/TransactionDetails';
+import OfferDetails from "./pages/OfferDetails/OfferDetails";
+import OrderDetails from './pages/Orders/OrderDetails/OrderDetails';
 import TopUpPage from "./pages/Payments/TopUpPage/TopUpPage";
-import Auth from "./pages/Auth/Auth";
-import {getCustomers} from "./redux/customers.reducer";
+import InformBox from "./components/InformBox/InformBox";
 
 function App() {
     const isCollapsed = useSelector<AppRootStateType, boolean>(state => state.sidebar.isCollapsed)
-    const {isMobile, isTablet, isDesktop} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
+    const {isMobile, isTablet, isDesktop} = useSelector<AppRootStateType, AppResponseType>(state => state.app.response)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         // authAPI.login("sebek.kasprzak.sk@gmail.com", "zaq1@WSX")
 
-        // dispatch(getMe())
 
         resizeInit()
 
@@ -87,13 +85,14 @@ function App() {
                 {isCollapsed && (isTablet || isMobile) && <div className={"hide-header-height"}/>}
                 <Layout>
                     {!(isTablet || isMobile) && < SideBar/>}
-                    <Content style={{marginLeft: getLeftMargin()}}
+                    <Content style={{marginLeft: getLeftMargin(), position: "relative"}}
                              className={"content"}
                     >
+                        <InformBox/>
                         <Switch>
                             <Route exact path={['/', '/dashboard']} render={() => <Dashboard/>}/>
-                            <Route path={'/auction/:id'} render={() => <AuctionDetails/>}/>
-                            <Route path={'/transactions/:id'} render={() => <TransactionDetails/>}/>
+                            <Route path={'/auction/:id'} render={() => <OfferDetails/>}/>
+                            <Route path={'/transactions/:id'} render={() => <OrderDetails/>}/>
                             <Route path={'/transactions'} render={() => <Transactions/>}/>
                             <Route path={'/templates/new'} render={() => <NewMessageTemplates/>}/>
                             <Route path={'/templates'} render={() => <MessageTemplates/>}/>

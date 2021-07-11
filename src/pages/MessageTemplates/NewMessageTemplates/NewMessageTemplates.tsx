@@ -6,7 +6,7 @@ import PageTitle from "../../../components/PageTitle/PageTitle";
 import ContentBox from "../../../components/ContentBox/ContentBox";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
-import {AppReducerType} from "../../../redux/app.reducer";
+import {AppReducerType, AppResponseType} from "../../../redux/app.reducer";
 import FloatLabel from "../../../components/FloatLabel/FloatLabel";
 import {Button, Input, message, Upload} from "antd";
 import {RichTextEditor} from "../../../components/RichTextEditor/RichTextEditor";
@@ -51,7 +51,7 @@ const dummyRequest = (props: any) => {
 };
 
 const NewMessageTemplates = () => {
-    const {isDesktop} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
+    const {isDesktop} = useSelector<AppRootStateType, AppResponseType>(state => state.app.response)
 
     const [templateName, setTemplateName] = useState<string>()
     const [emailTitle, setEmailTitle] = useState<string>()

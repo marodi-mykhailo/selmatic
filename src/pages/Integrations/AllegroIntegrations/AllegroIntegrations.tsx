@@ -9,6 +9,8 @@ import StatisticsTable from "../../../components/StatisticsTable/StatisticsTable
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
 import {RelatedAccountsTableType} from "../../../redux/relatedAccountsTable.reducer";
+import settingsIcon from "../../../assets/icons/settings_icon.png";
+import deleteIcon from "../../../assets/icons/delete_icon.png";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -50,17 +52,11 @@ const columns = [
         render: () => {
             return (
                 <Space size="small">
-                    <Button
-                        className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
-                        size={"large"}
-                        shape={"circle"}>
-                        <i className="fas fa-cog"/>
-                    </Button>
-                    <Button className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
-                            size={"large"}
-                            shape={"circle"}>
-                        <i className="fas fa-trash"/>
-                    </Button>
+                    <img className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
+                         src={settingsIcon}/>
+                    <img className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
+                         src={deleteIcon}
+                    />
                 </Space>
             )
         }

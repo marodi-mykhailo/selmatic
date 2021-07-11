@@ -9,7 +9,7 @@ import {AppRootStateType} from "../../../redux/store";
 import {Button} from "antd";
 import {CustomerType, getCustomers} from "../../../redux/customers.reducer";
 import {NavLink} from 'react-router-dom';
-import {AppReducerType} from "../../../redux/app.reducer";
+import {AppResponseType} from "../../../redux/app.reducer";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -19,7 +19,7 @@ const steps: Array<MBreadcrumbItemType> = [{
 
 const Customers = () => {
 
-    const {isMobile} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
+    const {isMobile} = useSelector<AppRootStateType, AppResponseType>(state => state.app.response)
     const customersData = useSelector<AppRootStateType, CustomerType[]>(state => state.customers)
 
     const dispatch = useDispatch();
@@ -37,24 +37,27 @@ const Customers = () => {
             fixed: !isMobile && "left"
         }, {
             title: "Imię i nazwisko",
-            dataIndex: "first_name",
-            key: "first_name"
+            dataIndex: "customer.first_name",
+            key: "first_name",
+            render: (text: string, {customer}: CustomerType) => {
+                return `${customer.first_name} ${customer.last_name}`
+            }
         }, {
             title: "City",
-            dataIndex: "city",
+            dataIndex: ["customer", "city"],
             key: "city"
         }, {
             title: "Adres e-mail",
-            dataIndex: "email",
+            dataIndex: ["customer", "email"],
             key: "email"
         }, {
             title: "Operacje",
             dataIndex: "operacje",
             key: "operacje",
-            render: (text: any, record: any) => {
+            render: (text: string, item: CustomerType) => {
                 return (
                     <Button className={"btn"}>
-                        <NavLink to={`/customers/${record.id}`}>Sczegóły</NavLink>
+                        <NavLink to={`/customers/${item.customer.customer_id}`}>Sczegóły</NavLink>
                     </Button>
                 )
             }
@@ -67,7 +70,7 @@ const Customers = () => {
             <MBreadcrumb steps={steps}/>
             <ContentBox title={"Lista klientów allegro"}>
                 <StatisticsTable data={customersData}
-                                 searchAttr={"firstLastName"}
+                                 searchAttr={"login"}
                                  columns={columns}/>
             </ContentBox>
         </div>

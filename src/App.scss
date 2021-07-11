@@ -116,6 +116,10 @@
   color: #C23E6A;
 }
 
+.text-green {
+  color: #26a69a;
+}
+
 /// custom-input ///
 
 .custom-input {
@@ -203,14 +207,23 @@
   }
 
   &--danger {
-    background-color: rgb(255, 0, 72);
+    background-color: rgb(255, 0, 30);
+
+    &:focus, &:hover, &:active {
+      background-color: #c40e0e;
+    }
   }
 
   &--accept {
     background-color: rgb(57, 195, 67);
+
+    &:focus, &:active {
+      background-color: rgb(57, 195, 67);
+    }
+
   }
 
-  &--light-blue{
+  &--light-blue {
     background-color: rgb(117, 162, 254);
   }
 }
@@ -267,22 +280,21 @@
   background: $lilac-blue-gradient;
 }
 
-.rose-black-gradient{
+.rose-black-gradient {
   background: $rose-black-gradient;
 }
 
-.gold-orange-gradient{
+.gold-orange-gradient {
   background: $gold-orange-gradient;
 }
 
-.orange-rose-gradient{
+.orange-rose-gradient {
   background: $orange-rose-gradient;
 }
 
-.violet-blue-gradient{
+.violet-blue-gradient {
   background: $violet-blue-gradient;
 }
-
 
 
 ////////
@@ -347,11 +359,11 @@
   box-shadow: $breadcrumbs-box-box-shadow;
 }
 
-.flex-column{
+.flex-column {
   display: flex;
   flex-direction: column;
 }
 
-.d-flex{
+.d-flex {
   display: flex;
 }

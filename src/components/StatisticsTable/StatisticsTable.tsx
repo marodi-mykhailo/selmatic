@@ -3,7 +3,6 @@ import './StatisticsTable.scss';
 import {Input, Table} from "antd";
 import {TransitionTableReducerStateType} from "../../redux/transactionTable.reducer";
 
-
 type StatisticsTablePropsType = {
     data: any
     searchAttr: string
@@ -12,7 +11,7 @@ type StatisticsTablePropsType = {
 
 
 const pagination = {
-    defaultCurrent: 10,
+    defaultCurrent: 1,
     showSizeChanger: true,
     pageSizeOptions: ['1', '10', '15', '20', '50'],
     showTotal: (total: any, range: any) => `Pozycje od ${range[0]} do ${range[1]} z ${total} łącznie`,
@@ -74,6 +73,7 @@ const StatisticsTable = ({data, searchAttr, columns}: StatisticsTablePropsType) 
                    bordered
                    size={"small"}
                    scroll={{x: 1000}}
+                   rowKey={"id"}
             />
         </div>
     );

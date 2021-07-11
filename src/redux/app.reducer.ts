@@ -1,15 +1,33 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-export type AppReducerType = {
+export type AppStatusType = {
+    type: "idle" | "success" | "loading" | "error"
+    message: string
+}
+
+export type AppResponseType = {
     isDesktop: boolean
     isTablet: boolean
     isMobile: boolean
 }
 
+export type AppReducerType = {
+    response: AppResponseType,
+    status: AppStatusType
+
+}
+
 const initialState: AppReducerType = {
-    isDesktop: true,
-    isTablet: false,
-    isMobile: false
+    response: {
+        isDesktop: true,
+        isTablet: false,
+        isMobile: false
+    },
+    status: {
+        type: "idle",
+        message: ""
+    }
+
 }
 
 const appSlice = createSlice({
@@ -17,24 +35,29 @@ const appSlice = createSlice({
     initialState,
     reducers: {
         setIsTablet(state) {
-            state.isTablet = true
-            state.isDesktop = false
-            state.isMobile = false
+            state.response.isTablet = true
+            state.response.isDesktop = false
+            state.response.isMobile = false
         },
         setIsDesktop(state) {
-            state.isTablet = false
-            state.isDesktop = true
-            state.isMobile = false
+            state.response.isTablet = false
+            state.response.isDesktop = true
+            state.response.isMobile = false
         },
         setIsMobile(state) {
-            state.isTablet = false
-            state.isDesktop = false
-            state.isMobile = true
-        }
+            state.response.isTablet = false
+            state.response.isDesktop = false
+            state.response.isMobile = true
+        },
+        setStatus(state, action: PayloadAction<AppStatusType>) {
+            state.status.type = action.payload.type
+            state.status.message = action.payload.message
+        },
+
     }
 })
 
 
 export default appSlice.reducer;
 
-export const {setIsTablet, setIsDesktop, setIsMobile} = appSlice.actions;
+export const {setIsTablet, setIsDesktop, setIsMobile, setStatus} = appSlice.actions;

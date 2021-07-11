@@ -4,10 +4,12 @@ import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBr
 import {v1} from "uuid";
 import ContentBox from "../../components/ContentBox/ContentBox";
 import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import {MessageTemplatesTableStateType} from "../../redux/messageTemplatesTable.reducer";
+import {deleteItemFromMessageTemplate, MessageTemplatesStateType} from "../../redux/messageTemplatesTable.reducer";
 import {Button, Space} from "antd";
+import settingsIcon from "../../assets/icons/settings_icon.png";
+import deleteIcon from "../../assets/icons/delete_icon.png";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -15,47 +17,45 @@ const steps: Array<MBreadcrumbItemType> = [{
     link: ""
 }]
 
-const columns = [
-    {
-        title: "ID",
-        dataIndex: "id",
-        key: "id"
-    }, {
-        title: "Nazwa Szablonu",
-        dataIndex: "nazwaSzablonu",
-        key: "nazwaSzablonu"
-    }, {
-        title: "Operacje",
-        dataIndex: "operacje",
-        key: "operacje",
-        render: () => {
-            return (
-                <Space size="small">
-                    <Button
-                        className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
-                        size={"large"}
-                        shape={"circle"}>
-                        <i className="fas fa-cog"/>
-                    </Button>
-                    <Button className={"statisticsTable__options-icon statisticsTable__options-icon--flag"}
-                            size={"large"}
-                            shape={"circle"}>
-                        <i className="far fa-flag"/>
-                    </Button>
-                    <Button className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
-                            size={"large"}
-                            shape={"circle"}>
-                        <i className="fas fa-trash"/>
-                    </Button>
-                </Space>
-            )
-        }
-    }
-]
-
 
 const MessageTemplates = () => {
-    const data = useSelector<AppRootStateType, MessageTemplatesTableStateType>(state => state.messageTemplatesTable)
+    const data = useSelector<AppRootStateType, MessageTemplatesStateType>(state => state.messageTemplatesTable)
+
+    const dispatch = useDispatch()
+
+    const columns = [
+        {
+            title: "ID",
+            dataIndex: "id",
+            key: "id"
+        }, {
+            title: "Nazwa Szablonu",
+            dataIndex: "nazwaSzablonu",
+            key: "nazwaSzablonu"
+        }, {
+            title: "Operacje",
+            dataIndex: "operacje",
+            key: "operacje",
+            render: (record: any, item: any) => {
+                return (
+                    <Space size="small">
+                        <img className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
+                             src={settingsIcon}/>
+                        <img className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
+                             src={deleteIcon}
+                             onClick={() => onDeleteItemHandler(item.id)}
+                        />
+                    </Space>
+                )
+            }
+        }
+    ]
+
+
+    const onDeleteItemHandler = (id: number) => {
+        dispatch(deleteItemFromMessageTemplate(id))
+    }
+
 
     return (
         <div>

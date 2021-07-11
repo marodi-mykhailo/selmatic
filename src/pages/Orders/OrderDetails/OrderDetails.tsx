@@ -1,21 +1,27 @@
-import React, {useState} from 'react';
-import './TransakcjeDetails.scss';
+import React, {ChangeEvent, useState} from 'react';
+import './OrderDetails.scss';
 import {NavLink, useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
-import {TransitionTableItemType} from "../../../redux/transactionTable.reducer";
 import MBreadcrumb, {MBreadcrumbItemType} from "../../../components/MBreadcrumb/MBreadcrumb";
 import {v1} from "uuid";
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import ContentBox from "../../../components/ContentBox/ContentBox";
 import {Button, Descriptions} from "antd";
+import {GetOrdersType, orderCancellation, sendCodesAgain} from "../../../redux/orders.reducer";
 
-const TransactionDetails = () => {
+const OrderDetails = () => {
     const {id} = useParams<{ id?: string }>()
 
-    const transaction = useSelector<AppRootStateType, TransitionTableItemType | undefined>(
-        state => state.transitionTable.find(item => item.id === id)
+    const order = useSelector<AppRootStateType, GetOrdersType | undefined>(
+        state => state.orders.find(item => item.order["0"].order_id === id)
     )
+
+    const {...orderData} = order?.order["0"]
+
+    const dispatch = useDispatch()
+
+    const [email, setEmail] = useState<string | undefined>(order?.customer.email)
 
     const steps: Array<MBreadcrumbItemType> = [{
         id: v1(),
@@ -23,9 +29,22 @@ const TransactionDetails = () => {
         link: "/transactions"
     }, {
         id: v1(),
-        name: transaction?.id,
+        name: String(order?.order["0"].order_id),
         link: ""
     }]
+
+    const onOrderCancel = () => {
+        dispatch(orderCancellation(orderData?.order_id))
+    }
+
+
+    const onEmailChanged = (e: ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.currentTarget.value)
+    }
+
+    const onCodesAgainSend = () => {
+        dispatch(sendCodesAgain({order_id: orderData?.order_id, email}))
+    }
 
 
     return (
@@ -34,37 +53,39 @@ const TransactionDetails = () => {
             <MBreadcrumb steps={steps}/>
             <div className={"space-between"}>
                 <ContentBox style={{padding: "40px 50px"}}
-                            title={`Szczegóły aukcji ${transaction?.auction}`}
+                            title={`Szczegóły aukcji ${orderData?.offer_name}`}
                             className={"width--60"}
                 >
                     <Descriptions size={"small"} className={"description"}>
                         <Descriptions.Item label="Nazwa aukcji">
-                            <NavLink to={""}>{transaction?.auction}</NavLink>
+                            <NavLink to={""}>{orderData?.offer_name}</NavLink>
                         </Descriptions.Item>
                         <Descriptions.Item label="Status wysyłki kodu">
-                            <span style={{color: "#39c343"}}>{transaction?.codeShippingStatus}</span>
+                            <span style={{color: "#39c343"}}>{order?.order.send_status}</span>
                         </Descriptions.Item>
-                        <Descriptions.Item label="Platforma">{transaction?.platform}</Descriptions.Item>
-                        <Descriptions.Item label="Klient">{transaction?.client}</Descriptions.Item>
-                        <Descriptions.Item label="Ilość zakupionych sztuk">{transaction?.count}</Descriptions.Item>
-                        <Descriptions.Item label="Cena za sztukę">{transaction?.pricePerItem}</Descriptions.Item>
-                        <Descriptions.Item label="Data zakupu">{transaction?.dateOfPurchase}</Descriptions.Item>
-                        <Descriptions.Item label="Zakończona">{transaction?.paymentStatus}</Descriptions.Item>
+                        <Descriptions.Item label="Platforma">{order?.order.platform}</Descriptions.Item>
+                        <Descriptions.Item label="Klient">{order?.customer.name}</Descriptions.Item>
+                        <Descriptions.Item label="Ilość zakupionych sztuk">{orderData?.quantity}</Descriptions.Item>
+                        <Descriptions.Item
+                            label="Cena za sztukę">{orderData?.order_price} {orderData?.order_currency}</Descriptions.Item>
+                        <Descriptions.Item label="Data zakupu">{orderData?.created_at}</Descriptions.Item>
+                        <Descriptions.Item label="Zakończona">{order?.order.ended}</Descriptions.Item>
                         <Descriptions.Item label="Data zakończenia transakcji PayU:"
                                            className={"no-after"}
                         >
-                            {transaction?.payUTransactionCompletionDate}
+                            {order?.order.date_PayU}
                         </Descriptions.Item>
-                        <Descriptions.Item label="Data wysyłki kodu">{transaction?.codeShipmentDate}</Descriptions.Item>
+                        <Descriptions.Item label="Data wysyłki kodu">{order?.order.sent_date}</Descriptions.Item>
                         <Descriptions.Item
                             label="Wysłane kody"
                             className={"sentCodes-column border-none"}
                         >
-                            {transaction?.sentCodes.map((item: string, index: number) => (
+                            {order?.order.codes.map((item: string, index: number) => (
                                 <div key={v1()}>
                                     {`${index + 1}. ${item}`}
                                 </div>
                             ))}
+
                         </Descriptions.Item>
 
 
@@ -74,7 +95,10 @@ const TransactionDetails = () => {
                             className={"width--40 text-center"}
                 >
                     <div className={"width--80 margin-center"}>
-                        <Button className={"btn btn--danger width--100 center"}>
+                        <Button className={"btn btn--danger width--100 center"}
+                                disabled={orderData.isCanceled === 0}
+                                onClick={onOrderCancel}
+                        >
                             ANULUJ TRANSAKCJĘ
                         </Button>
 
@@ -90,11 +114,13 @@ const TransactionDetails = () => {
                         />
 
                         <div className={"operation-email-input custom-box-shadow"}>
-                            kowalskikowal@allegromail.pl
+                            <input value={email} onChange={onEmailChanged}/>
                         </div>
 
                         <Button style={{margin: "20px 0"}}
-                                className={"btn btn--accept width--100 center"}>
+                                className={"btn btn--accept width--100 center"}
+                                onClick={onCodesAgainSend}
+                        >
                             WYŚLIJ PONOWNIE KODY
                         </Button>
 
@@ -113,4 +139,4 @@ const TransactionDetails = () => {
     );
 };
 
-export default TransactionDetails;
+export default OrderDetails;

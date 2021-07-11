@@ -4,22 +4,28 @@ import './ChartComponent.scss';
 
 
 type ChartComponentPropsType = {
-    data?: Array<number>
+    chartData?: any
     title: string
     pointBackgroundColor: string
     pointBorderColor: string
     tooltipText: string
 }
 
-const ChartComponent = ({title, pointBackgroundColor, pointBorderColor, tooltipText}: ChartComponentPropsType) => {
+const ChartComponent = ({
+                            title,
+                            pointBackgroundColor,
+                            pointBorderColor,
+                            tooltipText,
+                            chartData
+                        }: ChartComponentPropsType) => {
     const data = {
-        labels: [...Array.from({length: 30}, (_, index) => index + 1)],
+
         datasets: [
             {
                 label: "",
-                data: [...Array(30).fill(0)],
-                fill: false,
-                backgroundColor: pointBackgroundColor,
+                data: chartData,
+                fill: true,
+                backgroundColor: "rgba(254, 130, 113, .7)",
                 borderColor: pointBorderColor,
             },
         ],

@@ -6,7 +6,7 @@ import {v1} from "uuid";
 import ContentBox from "../../../components/ContentBox/ContentBox";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
-import {AppReducerType} from "../../../redux/app.reducer";
+import {AppReducerType, AppResponseType} from "../../../redux/app.reducer";
 import {Button, Input} from "antd";
 
 
@@ -18,7 +18,7 @@ const steps: Array<MBreadcrumbItemType> = [{
 
 const MobileApp = () => {
 
-    const {isDesktop} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
+    const {isDesktop} = useSelector<AppRootStateType, AppResponseType>(state => state.app.response)
 
     const textInput = useRef<Input>(null)
 

@@ -1,15 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './CodeDatabase.scss';
 import MBreadcrumb, {MBreadcrumbItemType} from "../../components/MBreadcrumb/MBreadcrumb";
 import {v1} from "uuid";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import ContentBox from "../../components/ContentBox/ContentBox";
 import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
-import {Button, Space} from "antd";
-import {useSelector} from "react-redux";
+import {Space} from "antd";
+import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
-import {CodeDatabaseTableType} from "../../redux/codeDatabaseTable.reducer";
-import {AppReducerType} from "../../redux/app.reducer";
+import {CodeDatabaseItemType, deleteItemFromCodeDatabase, getCodeDatabase} from "../../redux/codeDatabase.reduce";
+import {AppResponseType} from "../../redux/app.reducer";
+
+import settingsIcon from "../../assets/icons/settings_icon.png";
+import deleteIcon from "../../assets/icons/delete_icon.png";
 
 const steps: Array<MBreadcrumbItemType> = [{
     id: v1(),
@@ -20,10 +23,15 @@ const steps: Array<MBreadcrumbItemType> = [{
 
 const CodeDatabase = () => {
 
-    const {isMobile} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
+    const {isMobile} = useSelector<AppRootStateType, AppResponseType>(state => state.app.response)
 
+    const data = useSelector<AppRootStateType, Array<CodeDatabaseItemType>>(state => state.codeDatabase.codeDatabases)
 
-    const data = useSelector<AppRootStateType, CodeDatabaseTableType>(state => state.codeDatabaseTable)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getCodeDatabase())
+    }, [])
 
 
     const columns = [
@@ -34,14 +42,17 @@ const CodeDatabase = () => {
             fixed: !isMobile && "left"
         }, {
             title: "Nazwa bazy",
-            dataIndex: "nazwaBazy",
-            key: "nazwaBazy",
+            dataIndex: "code",
+            key: "code",
             fixed: !isMobile && "left"
         },
         {
             title: "Data dodania",
-            dataIndex: "dataDodania",
-            key: "dataDodania"
+            dataIndex: "created_at",
+            key: "created_at",
+            render: (record: any) => {
+                return (new Date(record)).toUTCString()
+            }
         }, {
             title: "Kodów",
             dataIndex: "codesCount",
@@ -56,38 +67,48 @@ const CodeDatabase = () => {
             key: "leftCount"
         }, {
             title: "Typ bazy",
-            dataIndex: "typBazy",
-            key: "typBazy"
+            dataIndex: "db_type",
+            key: "db_type",
+            render: (text: any) => {
+                switch (+text) {
+                    case 0:
+                        return "Zwykła"
+                    case 1:
+                        return "Rekurencyjna"
+                    default:
+                        return "-----------"
+                }
+            }
         }, {
             title: "Operacje",
             dataIndex: "operacje",
             key: "operacje",
-            render: () => {
+            render: (record: any, item: any) => {
                 return (
                     <Space size="small">
-                        <Button
-                            className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
-                            size={"large"}
-                            shape={"circle"}>
-                            <i className="fas fa-cog"/>
-                        </Button>
-                        <Button className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
-                                size={"large"}
-                                shape={"circle"}>
-                            <i className="fas fa-trash"/>
-                        </Button>
+                        <img className={"statisticsTable__options-icon statisticsTable__options-icon--settings"}
+                             src={settingsIcon}/>
+                        <img className={"statisticsTable__options-icon statisticsTable__options-icon--delete"}
+                             src={deleteIcon}
+                             onClick={() => onDeleteHandler(item.id)}
+                        />
                     </Space>
                 )
             }
         }
     ]
 
+
+    const onDeleteHandler = (id: number) => {
+        dispatch(deleteItemFromCodeDatabase(id))
+    }
+
     return (
         <div>
             <PageTitle title={"Bazy kodów"} subtitle={"lista baz kodów"}/>
             <MBreadcrumb steps={steps}/>
             <ContentBox title={"Lista baz kodów"}>
-                <StatisticsTable data={data} searchAttr={"nazwaBazy"} columns={columns}/>
+                <StatisticsTable data={data} searchAttr={"code"} columns={columns}/>
             </ContentBox>
         </div>
     );

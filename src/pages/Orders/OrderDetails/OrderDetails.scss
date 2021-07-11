@@ -4,6 +4,14 @@
   border-radius: $basic-border-radius;
   font-size: 18px;
   padding: 10px 0;
+
+  input{
+    width: 80%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+  }
 }
 
 .sentCodes-column {

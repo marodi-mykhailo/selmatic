@@ -21,8 +21,8 @@ const itemStyle = {
 const CustomersInfo = () => {
     const {id} = useParams<{ id?: string }>()
 
-    const customer = useSelector<AppRootStateType, CustomerType | undefined>(state =>
-        state.customers.find(item => item.id === Number(id)))
+    const data = useSelector<AppRootStateType, CustomerType | undefined>(state => state.customers.find((item: CustomerType) => item.customer.customer_id === id))
+
 
     const steps: Array<MBreadcrumbItemType> = [{
         id: v1(),
@@ -30,7 +30,7 @@ const CustomersInfo = () => {
         link: "/customers"
     }, {
         id: v1(),
-        name: customer?.login,
+        name: data?.customer.login,
         link: ""
     }]
 
@@ -38,32 +38,36 @@ const CustomersInfo = () => {
         <div>
             <PageTitle title={"Klienci"} subtitle={"szegóły klienta Allegro"}/>
             <MBreadcrumb steps={steps}/>
-            <ContentBox title={`szegóły klienta: ${customer?.first_name}`}>
+            <ContentBox title={`szegóły klienta: ${data?.customer.first_name}`}>
                 <Descriptions>
                     <Item labelStyle={itemStyle}
-                          label={"Imie i Nazwisko"}>{customer?.first_name} {customer?.last_name}</Item>
+                          label={"Imie i Nazwisko"}>{data?.customer.first_name} {data?.customer.last_name}</Item>
                     <Item labelStyle={itemStyle}
-                          label={"Adres"}>{customer?.first_name}</Item>
+                          label={"Adres"}>{data?.customer.address}</Item>
                     <Item labelStyle={itemStyle}
-                          label={"Kod pocztowy, miasto"}> </Item>
+                          label={"Kod pocztowy, miasto"}>{data?.customer.city}</Item>
                     <Item labelStyle={itemStyle}
-                          label={"Telefon"}> </Item>
+                          label={"Telefon"}>{data?.customer.no_tel}</Item>
                     <Item labelStyle={itemStyle}
-                          label={"E-mail"}>{customer?.email}</Item>
+                          label={"E-mail"}>{data?.customer.email}</Item>
                     <Item labelStyle={itemStyle}
-                          label={"Firma"}> </Item>
+                          label={"Firma"}>{data?.customer.office}</Item>
                     <Item labelStyle={itemStyle}
-                          label={"Allegro login"}>{customer?.login}</Item>
+                          label={"Allegro login"}>{data?.customer.login}</Item>
                     <Item labelStyle={itemStyle}
-                          label={"Suma transakcji (PLN)"}> </Item>
+                          label={"Suma transakcji (PLN)"}>{data?.customer.orders_table_id}</Item>
                     <Item labelStyle={itemStyle}
                           label={"Ostatni zakup"}> </Item>
                     <Item labelStyle={itemStyle}
-                          label={"Liczba transakcji"}> </Item>
+                          label={"Liczba transakcji"}>{data?.customer.orders}</Item>
                     <Item labelStyle={itemStyle}
-                          label={"Data pierwszego zakupu"}> </Item>
+                          label={"Data pierwszego zakupu"}>{
+                        (new Date(data?.customer.created_at || 0)).toUTCString()
+                    }</Item>
                     <Item labelStyle={itemStyle}
-                          label={"Data ostatniego zakupu"}> </Item>
+                          label={"Data ostatniego zakupu"}>{
+                        (new Date(data?.customer.updated_at || 0)).toUTCString()
+                    }</Item>
                 </Descriptions>
             </ContentBox>
         </div>

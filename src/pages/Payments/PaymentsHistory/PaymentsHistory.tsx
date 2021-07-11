@@ -68,7 +68,7 @@ const PaymentsHistory = () => {
         <div>
             <PageTitle title={"Historia płatności"} subtitle={"Lista Twoich płatności"}/>
             <MBreadcrumb steps={steps}/>
-            <ContentBox title={"Lista szablonów wiadomości"}>
+            <ContentBox title={"Historia płatności"}>
                 <StatisticsTable data={data} searchAttr={"id"} columns={columns}/>
             </ContentBox>
         </div>

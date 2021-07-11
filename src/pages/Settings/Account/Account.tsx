@@ -8,7 +8,7 @@ import FloatLabel from "../../../components/FloatLabel/FloatLabel";
 import {Button, Input, Select} from "antd";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../../redux/store";
-import {AppReducerType} from "../../../redux/app.reducer";
+import {AppReducerType, AppResponseType} from "../../../redux/app.reducer";
 
 
 const steps: Array<MBreadcrumbItemType> = [{
@@ -19,7 +19,7 @@ const steps: Array<MBreadcrumbItemType> = [{
 
 const Account = () => {
 
-    const {isDesktop} = useSelector<AppRootStateType, AppReducerType>(state => state.app)
+    const {isDesktop} = useSelector<AppRootStateType, AppResponseType>(state => state.app.response)
 
 
     const [accountType, setAccountType] = useState()

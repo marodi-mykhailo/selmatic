@@ -6,17 +6,24 @@ type CompanyType = {
     taxId: string
 }
 
-export type MeReducerType = {
-    id: string
-    login: string
-    firstName: string
-    lastName: string
-    email: string
-    company: CompanyType
+export type UserType = {
+    id: number,
+    user_id: number,
+    type: string,
+    full_name: string,
+    full_office_name: string,
+    adress: string,
+    post_code: string,
+    city: string,
+    NIP: string,
+    phone_number: string,
+    country: string,
+    created_at: string,
+    updated_at: string
 }
 
 
-const initialState: MeReducerType[] = []
+const initialState: UserType[] = []
 
 export const getMe = createAsyncThunk(
     "me/getMe",
@@ -31,7 +38,7 @@ const meSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [getMe.fulfilled.type]: (state, action: PayloadAction<MeReducerType[]>) => {
+        [getMe.fulfilled.type]: (state, action: PayloadAction<UserType[]>) => {
             state.push(...action.payload)
         }
     }
